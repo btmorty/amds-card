@@ -1,0 +1,164 @@
+@use 'sass:math';
+
+$padding: 8px !default;
+$border-color: #85A7CA !default;
+$light-gray-color: #F5F5F5 !default;
+$header-heght: 30px !default;
+
+.amds-card {
+  display: block;
+  position: relative;
+  min-width: 320px;
+  margin-bottom: 8px;
+
+  .amds-card-colored-border {
+    position: absolute;
+    z-index: 1;
+    top: -1px;
+    left: -2px;
+    height: 100%;
+    width: 35px;
+    border-left: 2px solid #888;
+    border-color: #888 #888 currentcolor;
+    border-top: 2px solid #888;
+    pointer-events: none;
+  }
+}
+
+// HEADER STYLES
+
+.amds-card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: $header-heght;
+  padding: 0 $padding 0 $padding;
+  background-color: $light-gray-color;
+  border-top-right-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $border-color;
+  border-bottom: none;
+  border-left: none;
+
+  /// ICON STYLES
+
+  .amds-card-drag-icon {
+    cursor: move;
+    justify-content: center;
+    width: 16px;
+    display: none;
+  }
+  &:hover {
+    .amds-card-drag-icon {
+      display: flex;
+    }
+    .amds-card-icon {
+      display: none;
+    }
+    .amds-card-actions {
+      display: flex;
+    }
+  }
+  .amds-card-icon {
+    flex: 0 0 auto;
+  }
+
+  // HEADER TEXT STYLES
+
+  .amds-card-header-text {
+    margin: 0 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    .amds-card-title {
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+    }
+    
+    .amds-card-subtitle {
+      margin-left: 8px;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 300;
+    }
+  }
+
+  // ACTION DEFAULT STYLE
+
+  .amds-card-actions {
+    display: none;
+  }
+}
+
+.amds-card-header::after {
+  content: "";
+  position: absolute;
+  top: $header-heght;
+  right: 0;
+  height: 15px;
+  border-right: 1px solid $border-color;
+  z-index: 99;
+}
+
+// ACTIONS STYLES
+
+.amds-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: math.div(-$padding, 2);
+  margin-right: math.div(-$padding, 2);
+  padding: $padding 0;
+}
+
+.amds-card-actions {
+  .amds-button,
+  .amds-raised-button,
+  .amds-stroked-button {
+    margin: 0 8px;
+  }
+}
+
+// CONTENT STYLES
+
+.amds-card-content {
+  display: block;
+  padding: $padding;
+}
+
+// FIRST/LAST CHILD ADJUSTMENTS
+
+// top els in amds-card-content and amds-card can't have their default margin-tops (e.g. <p> tags)
+// or they'll incorrectly add to card's top padding
+.amds-card > :first-child, .amds-card-content > :first-child {
+  margin-top: 0;
+}
+
+// last els in amds-card-content and amds-card can't have their default margin-bottoms (e.g. <p> tags)
+// or they'll incorrectly add to card's bottom padding
+.amds-card > :last-child:not(.amds-card-footer),
+.amds-card-content > :last-child:not(.amds-card-footer) {
+  margin-bottom: 0;
+}
+
+// actions panel on bottom should be 8px from bottom of card
+// so must strip 16px from default card padding
+.amds-card > .amds-card-actions:last-child {
+  margin-bottom: -8px;
+  padding-bottom: 0;
+}
+
+// actions panel should always be 8px from sides,
+// so the first button in the actions panel can't add its own margins
+.amds-card-actions {
+  .amds-button,
+  .amds-raised-button,
+  .amds-stroked-button {
+    &:last-child {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
