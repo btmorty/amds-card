@@ -6,8 +6,10 @@ import {
   Input,
   Optional,
   Inject,
+  HostListener,
+  ElementRef,
 } from "@angular/core";
-import {ANIMATION_MODULE_TYPE} from "@angular/platform-browser/animations";
+import { ANIMATION_MODULE_TYPE } from "@angular/platform-browser/animations";
 
 /**
  * Content of a card, needed as it's used as a selector in the API.
@@ -15,9 +17,9 @@ import {ANIMATION_MODULE_TYPE} from "@angular/platform-browser/animations";
  */
 @Directive({
   selector: "amds-card-content, [amds-card-content]",
-  host: {"class": "amds-card-content"},
+  host: { "class": "amds-card-content" },
 })
-export class AmdsCardContent {}
+export class AmdsCardContent { }
 
 /**
  * Title of a card, needed as it's used as a selector in the API.
@@ -29,7 +31,7 @@ export class AmdsCardContent {}
     "class": "amds-card-title",
   },
 })
-export class AmdsCardTitle {}
+export class AmdsCardTitle { }
 
 /**
  * Sub-title of a card, needed as it's used as a selector in the API.
@@ -41,7 +43,7 @@ export class AmdsCardTitle {}
     "class": "amds-card-subtitle",
   },
 })
-export class AmdsCardSubtitle {}
+export class AmdsCardSubtitle { }
 
 /**
  * Action section of a card, needed as it's used as a selector in the API.
@@ -52,12 +54,34 @@ export class AmdsCardSubtitle {}
   exportAs: "amdsCardActions",
   host: {
     "class": "amds-card-actions",
-    "[class.amds-card-actions-align-end]": "align === \"end\"",
   },
 })
-export class AmdsCardActions {
-  /** Position of the actions inside the card. */
-  @Input() align: "start" | "end" = "start";
+export class AmdsCardActions { }
+
+/**
+ * Action button behavior directive, needed as it's used as a selector in the API.
+ * @docs-private
+ */
+@Directive({
+  selector: "[hoverColor]",
+})
+export class HoverColorDirective {
+
+  constructor(private el: ElementRef) { }
+  @Input() hoverColor: string;
+
+  @HostListener("mouseenter") onMouseEnter(): void {
+    this.setElementColor(this.hoverColor);
+  }
+
+  @HostListener("mouseleave") onMouseLeave(): void {
+    this.setElementColor("#CAD1DD");
+  }
+
+  private setElementColor(color: string): void {
+    this.el.nativeElement.style.color = color;
+  }
+
 }
 
 /**
@@ -70,7 +94,7 @@ export class AmdsCardActions {
  * - amds-card-content
  * - amds-card-actions
  */
- @Component({
+@Component({
   selector: "amds-card",
   exportAs: "amdsCard",
   templateUrl: "card.html",
@@ -78,14 +102,13 @@ export class AmdsCardActions {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    "class": "amds-card amds-focus-indicator",
-    "[class._amds-animation-noopable]": "_animationMode === \"NoopAnimations\"",
+    "class": "amds-card",
   },
 })
 export class AmdsCard {
   @Input() color: string;
   // @breaking-change 9.0.0 `_animationMode` parameter to be made required.
-  constructor(@Optional() @Inject(ANIMATION_MODULE_TYPE) public _animationMode?: string) {}
+  constructor(@Optional() @Inject(ANIMATION_MODULE_TYPE) public _animationMode?: string) { }
 }
 
 /**
@@ -98,8 +121,27 @@ export class AmdsCard {
   templateUrl: "card-header.html",
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {"class": "amds-card-header"},
+  host: { "class": "amds-card-header" },
 })
 export class AmdsCardHeader {
+  @Input() icon: string;
+}
+
+/**
+ * Component intended to be used within the `<amds-card-header>` component. It adds styles for buttons
+ * @docs-private
+ */
+@Component({
+  selector: "amds-card-button",
+  templateUrl: "card-button.html",
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    "class": "amds-card-button",
+  },
+})
+export class AmdsCardButton {
+  /** Position of the actions inside the card. */
+  @Input() color: string;
   @Input() icon: string;
 }

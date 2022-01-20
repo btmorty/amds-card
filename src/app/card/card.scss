@@ -4,6 +4,7 @@ $padding: 8px !default;
 $border-color: #85A7CA !default;
 $light-gray-color: #F5F5F5 !default;
 $header-heght: 30px !default;
+$muted-gray-color: #CAD1DD !default;
 
 .amds-card {
   display: block;
@@ -85,12 +86,6 @@ $header-heght: 30px !default;
       font-weight: 300;
     }
   }
-
-  // ACTION DEFAULT STYLE
-
-  .amds-card-actions {
-    display: none;
-  }
 }
 
 .amds-card-header::after {
@@ -106,18 +101,34 @@ $header-heght: 30px !default;
 // ACTIONS STYLES
 
 .amds-card-actions {
-  display: flex;
+  display: none;
   justify-content: flex-end;
   margin-left: math.div(-$padding, 2);
   margin-right: math.div(-$padding, 2);
   padding: $padding 0;
+
+  // ACTIONS ICON DEFAULT STYLE
+
+  .amds-card-button
+  button:not(:hover) {
+    color: $muted-gray-color !important;
+  }
 }
 
 .amds-card-actions {
-  .amds-button,
-  .amds-raised-button,
-  .amds-stroked-button {
-    margin: 0 8px;
+  .amds-card-button
+  button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    min-width: 0;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
   }
 }
 
