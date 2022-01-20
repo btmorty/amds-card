@@ -142,6 +142,7 @@ export class AmdsCardHeader {
 })
 export class AmdsCardButton {
   /** Position of the actions inside the card. */
-  @Input() color: string;
-  @Input() icon: string;
+  @Input() color: string = "";
+  @Input() icon: string = "";
+  @Input() tooltipText: string = "";
 }

@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { MatTooltipModule } from "@angular/material/tooltip";
 import {
   AmdsCard,
   AmdsCardActions,
@@ -13,7 +14,8 @@ import {
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatTooltipModule
   ],
   exports: [
     AmdsCard,
@@ -23,7 +25,7 @@ import {
     AmdsCardSubtitle,
     AmdsCardActions,
     AmdsCardButton,
-    HoverColorDirective
+    HoverColorDirective,
   ],
   declarations: [
     AmdsCard,
@@ -33,7 +35,7 @@ import {
     AmdsCardSubtitle,
     AmdsCardActions,
     AmdsCardButton,
-    HoverColorDirective
+    HoverColorDirective,
   ],
 })
 export class AmdsCardModule { }
