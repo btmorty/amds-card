@@ -27,7 +27,6 @@ $muted-gray-color: #CAD1DD !default;
 }
 
 // HEADER STYLES
-
 .amds-card-header {
   display: flex;
   flex-direction: row;
@@ -43,7 +42,6 @@ $muted-gray-color: #CAD1DD !default;
   border-left: none;
 
   /// ICON STYLES
-
   .amds-card-drag-icon {
     cursor: move;
     justify-content: center;
@@ -66,7 +64,6 @@ $muted-gray-color: #CAD1DD !default;
   }
 
   // HEADER TEXT STYLES
-
   .amds-card-header-text {
     margin: 0 8px;
     text-overflow: ellipsis;
@@ -99,7 +96,6 @@ $muted-gray-color: #CAD1DD !default;
 }
 
 // ACTIONS STYLES
-
 .amds-card-actions {
   display: none;
   justify-content: flex-end;
@@ -108,15 +104,12 @@ $muted-gray-color: #CAD1DD !default;
   padding: $padding 0;
 
   // ACTIONS ICON DEFAULT STYLE
-
-  .amds-card-button
   button:not(:hover) {
     color: $muted-gray-color !important;
   }
 }
 
 .amds-card-actions {
-  .amds-card-button
   button {
     display: inline-flex;
     justify-content: center;
@@ -134,7 +127,6 @@ $muted-gray-color: #CAD1DD !default;
 }
 
 // CONTENT STYLES
-
 .amds-card-content {
   display: block;
   padding: $padding;

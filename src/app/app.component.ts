@@ -6,4 +6,8 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
 
+  test() {
+    console.log("THIS IS A TEST");
+  }
+
 }

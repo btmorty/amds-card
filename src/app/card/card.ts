@@ -4,12 +4,9 @@ import {
   ChangeDetectionStrategy,
   Directive,
   Input,
-  Optional,
-  Inject,
   HostListener,
   ElementRef,
 } from "@angular/core";
-import { ANIMATION_MODULE_TYPE } from "@angular/platform-browser/animations";
 
 /**
  * Content of a card, needed as it's used as a selector in the API.
@@ -85,7 +82,7 @@ export class HoverColorDirective {
 }
 
 /**
- * A basic content container component that adds the styles of a Material design card.
+ * A basic content container component that adds the styles of an AdvancedMD design card.
  *
  * While this component can be used alone, it also provides a number
  * of preset styles for common card sections, including:
@@ -97,18 +94,15 @@ export class HoverColorDirective {
 @Component({
   selector: "amds-card",
   exportAs: "amdsCard",
+  host: { "class": "amds-card" },
   templateUrl: "card.html",
   styleUrls: ["card.scss"],
+  inputs: ["color"],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    "class": "amds-card",
-  },
 })
 export class AmdsCard {
   @Input() color: string;
-  // @breaking-change 9.0.0 `_animationMode` parameter to be made required.
-  constructor(@Optional() @Inject(ANIMATION_MODULE_TYPE) public _animationMode?: string) { }
 }
 
 /**
@@ -118,10 +112,11 @@ export class AmdsCard {
  */
 @Component({
   selector: "amds-card-header",
+  exportAs: "amdsCardHeader",
+  host: { "class": "amds-card-header" },
   templateUrl: "card-header.html",
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { "class": "amds-card-header" },
 })
 export class AmdsCardHeader {
   @Input() icon: string;
@@ -132,17 +127,18 @@ export class AmdsCardHeader {
  * @docs-private
  */
 @Component({
-  selector: "amds-card-button",
-  templateUrl: "card-button.html",
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: "button[amds-card-button]",
+  exportAs: "amdsCardButton",
   host: {
     "class": "amds-card-button",
+    "[attr.disabled]": "disabled || null",
   },
+  templateUrl: "card-button.html",
+  inputs: ["disabled"],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AmdsCardButton {
-  /** Position of the actions inside the card. */
-  @Input() color: string = "";
-  @Input() icon: string = "";
-  @Input() tooltipText: string = "";
+  @Input() icon: string;
+  @Input() color: string;
 }
