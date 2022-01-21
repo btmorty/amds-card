@@ -42,10 +42,20 @@ $muted-gray-color: #CAD1DD !default;
   border-left: none;
 
   /// ICON STYLES
+  .amds-card-icon {
+    width: 24px;
+    height: 24px;
+    background-size: 24px;
+    background-repeat: no-repeat;
+  }
+
   .amds-card-drag-icon {
     cursor: move;
     justify-content: center;
-    width: 16px;
+    align-items: center;
+    height: 24px;
+    min-width: 24px;
+    max-width: 24px;
     display: none;
   }
   &:hover {
@@ -122,6 +132,7 @@ $muted-gray-color: #CAD1DD !default;
     line-height: 24px;
     border: none;
     border-radius: 50%;
+    background-color: transparent;
     cursor: pointer;
   }
 }
