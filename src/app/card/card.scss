@@ -69,14 +69,15 @@ $add-button-color: #41912B !default;
     }
     // DEFAULT ACTION BUTTON COLOR
     .amds-card-actions
-    button {
+    button:not(:disabled)
+    i:not(.amds-icon-plus-add){
       color: $default-button-color;
     }
     // PLUS ACTION BUTTON OVERRIDE
     .amds-card-actions
-    button
+    button:not(:disabled)
     i.amds-icon-plus-add {
-      color: $add-button-color !important;
+      color: $add-button-color;
     }
   }
   .amds-card-icon {
@@ -86,6 +87,7 @@ $add-button-color: #41912B !default;
   // HEADER TEXT STYLES
   .amds-card-header-text {
     margin: 0 8px;
+    padding-bottom: 2px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -128,8 +130,13 @@ $add-button-color: #41912B !default;
     color: $muted-gray-color;
   }
 
+  button:disabled {
+    cursor: default;
+    color: $muted-gray-color !important;
+  }
+
   // ACTIONS ICON HOVER STYLE
-  button:hover {
+  button:hover:not(:disabled) {
     background-color: $muted-gray-color;
   }
 }
