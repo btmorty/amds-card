@@ -4,8 +4,6 @@ import {
   ChangeDetectionStrategy,
   Directive,
   Input,
-  HostListener,
-  ElementRef,
 } from "@angular/core";
 
 /**
@@ -54,32 +52,6 @@ export class AmdsCardSubtitle { }
   },
 })
 export class AmdsCardActions { }
-
-/**
- * Action button behavior directive, needed as it's used as a selector in the API.
- * @docs-private
- */
-@Directive({
-  selector: "[hoverColor]",
-})
-export class HoverColorDirective {
-
-  constructor(private el: ElementRef) { }
-  @Input() hoverColor: string;
-
-  @HostListener("mouseenter") onMouseEnter(): void {
-    this.setElementColor(this.hoverColor);
-  }
-
-  @HostListener("mouseleave") onMouseLeave(): void {
-    this.setElementColor("#CAD1DD");
-  }
-
-  private setElementColor(color: string): void {
-    this.el.nativeElement.style.color = color;
-  }
-
-}
 
 /**
  * A basic content container component that adds the styles of an AdvancedMD design card.
@@ -140,5 +112,4 @@ export class AmdsCardHeader {
 })
 export class AmdsCardButton {
   @Input() icon: string;
-  @Input() color: string;
 }

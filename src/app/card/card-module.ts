@@ -9,7 +9,6 @@ import {
   AmdsCardSubtitle,
   AmdsCardTitle,
   AmdsCardButton,
-  HoverColorDirective
 } from "./card";
 
 @NgModule({
@@ -25,7 +24,6 @@ import {
     AmdsCardSubtitle,
     AmdsCardActions,
     AmdsCardButton,
-    HoverColorDirective,
   ],
   declarations: [
     AmdsCard,
@@ -35,7 +33,6 @@ import {
     AmdsCardSubtitle,
     AmdsCardActions,
     AmdsCardButton,
-    HoverColorDirective,
   ],
 })
 export class AmdsCardModule { }

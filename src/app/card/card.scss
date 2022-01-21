@@ -5,6 +5,8 @@ $border-color: #85A7CA !default;
 $light-gray-color: #F5F5F5 !default;
 $header-heght: 30px !default;
 $muted-gray-color: #CAD1DD !default;
+$default-button-color: #45668F !default;
+$add-button-color: #41912B !default;
 
 .amds-card {
   display: block;
@@ -65,8 +67,16 @@ $muted-gray-color: #CAD1DD !default;
     .amds-card-icon {
       display: none;
     }
-    .amds-card-actions {
-      display: flex;
+    // DEFAULT ACTION BUTTON COLOR
+    .amds-card-actions
+    button {
+      color: $default-button-color;
+    }
+    // PLUS ACTION BUTTON OVERRIDE
+    .amds-card-actions
+    button
+    i.amds-icon-plus-add {
+      color: $add-button-color !important;
     }
   }
   .amds-card-icon {
@@ -107,15 +117,20 @@ $muted-gray-color: #CAD1DD !default;
 
 // ACTIONS STYLES
 .amds-card-actions {
-  display: none;
+  display: flex;
   justify-content: flex-end;
   margin-left: math.div(-$padding, 2);
   margin-right: math.div(-$padding, 2);
   padding: $padding 0;
 
   // ACTIONS ICON DEFAULT STYLE
-  button:not(:hover) {
-    color: $muted-gray-color !important;
+  button {
+    color: $muted-gray-color;
+  }
+
+  // ACTIONS ICON HOVER STYLE
+  button:hover {
+    background-color: $muted-gray-color;
   }
 }
 
