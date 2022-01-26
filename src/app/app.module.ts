@@ -9,6 +9,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 import { AmdsCardModule } from "./card";
 import { CommonModule } from "@angular/common";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,8 @@ import { CommonModule } from "@angular/common";
     MatNativeDateModule,
     MaterialExampleModule,
     ReactiveFormsModule,
-    AmdsCardModule
+    AmdsCardModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
