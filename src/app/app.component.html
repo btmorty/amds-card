@@ -1,6 +1,24 @@
-<amds-card borderColor="#104784" cardIcon="patient-card" titleText="Patient" subtitleText="She, Her, Hers | Chart # 9443 | ID# 12333">
+<style>
+  table {
+    margin-left: 4px;
+    border-spacing: 0;
+  }
+
+  table td {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  table td+td {
+    border-left: 1px solid black;
+  }
+</style>
+
+<amds-card borderColor="#104784" cardIcon="patient-card" titleText="Patient"
+  subtitleText="She, Her, Hers | Chart # 9443 | ID# 12333">
   <amds-card-actions>
-    <button amds-card-button [matMenuTriggerFor]="patientCardMenu" buttonIcon="ellipsis-horizontal" matTooltip="More"></button>
+    <button amds-card-button [matMenuTriggerFor]="patientCardMenu" buttonIcon="ellipsis-horizontal"
+      matTooltip="More"></button>
     <mat-menu #patientCardMenu="matMenu" xPosition="before">
       <button mat-menu-item>
         <mat-icon>visibility_off</mat-icon>
@@ -9,81 +27,137 @@
     </mat-menu>
   </amds-card-actions>
   <amds-card-content>
-    <div style="display: flex; align-items: center; padding: 2px;">
+    <div style="display: flex; align-items: center;">
       <span class="amds-icon amds-icon-patient-name" style="margin-left: 8px; color: #45668F; font-size: 12px;"></span>
-      <span style="margin-left: 8px; font-weight: 600; font-size: 14px; line-height: 12px;"><u>N</u>AME</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">Paula Smith | Pat Milly
-        Smith</span>
+      <table>
+        <tr>
+          <td><span style="font-weight: 600; font-size: 14px; line-height: 12px;"><u>N</u>AME</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">Paula Smith</span>
+          </td>
+        </tr>
+      </table>
     </div>
     <hr style="border-bottom: 3px solid #F3F3F3; border-top: none; border-left: none; border-right: none;" />
-    <div style="display: flex; align-items: center; padding: 2px; margin-top: 8px;">
+    <div style="display: flex; align-items: center; margin-top: 8px;">
       <span class="amds-icon amds-icon-date-of-birth" style="margin-left: 8px; color: #45668F; font-size: 12px;"></span>
-      <span style="margin-left: 8px; font-weight: 600; font-size: 14px; line-height: 12px;"><u>D</u>OB</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">10/11/21 |</span>
-      <span style="margin-left: 4px; font-weight: 600; font-size: 14px; line-height: 12px;">AGE</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">35Y |</span>
-      <span style="margin-left: 4px; font-weight: 600; font-size: 14px; line-height: 12px;">SSN</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">5303</span>
+      <table>
+        <tr>
+          <td><span style="font-weight: 600; font-size: 14px; line-height: 12px;"><u>D</u>OB</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">10/11/21</span>
+          </td>
+          <td><span style="font-weight: 600; font-size: 14px; line-height: 12px;">AGE</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">35Y</span>
+          </td>
+          <td><span style="font-weight: 600; font-size: 14px; line-height: 12px;">SSN</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">5303</span>
+          </td>
+        </tr>
+      </table>
     </div>
     <hr style="border-bottom: 3px solid #F3F3F3; border-top: none; border-left: none; border-right: none;" />
-    <div style="display: flex; align-items: center; padding: 2px; margin-top: 8px;">
+    <div style="display: flex; align-items: center; margin-top: 8px;">
       <span class="amds-icon amds-icon-key1" style="margin-left: 8px; color: #45668F; font-size: 12px;"></span>
-      <span style="margin-left: 8px; font-weight: 600; font-size: 14px; line-height: 12px;">ACCO<u>U</u>NT</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">11334 |</span>
-      <span style="margin-left: 4px; font-weight: 600; font-size: 14px; line-height: 12px;">BALANCE</span>
-      <span
-        style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px; background-color: #FFC8C8;">$5,000</span>
+      <table>
+        <tr>
+          <td><span style="font-weight: 600; font-size: 14px; line-height: 12px;">ACCO<u>U</u>NT</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">11334</span>
+          </td>
+          <td><span style="font-weight: 600; font-size: 14px; line-height: 12px;">BALANCE</span>
+            <span
+              style="font-weight: 300; font-size: 14px; line-height: 12px; background-color: #FFC8C8; margin-left: 4px;">$5,000</span>
+          </td>
+        </tr>
+      </table>
     </div>
     <hr style="border-bottom: 3px solid #F3F3F3; border-top: none; border-left: none; border-right: none;" />
-    <div style="display: flex; align-items: center; padding: 2px; margin-top: 8px;">
+    <div style="display: flex; align-items: center; margin-top: 8px;">
       <span class="amds-icon amds-icon-address-o" style="margin-left: 8px; color: #45668F; font-size: 12px;"></span>
-      <span style="margin-left: 8px; font-weight: 600; font-size: 14px; line-height: 12px;"><u>A</u>DDRESS</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">123 West Main Street,
-        SunnyDale City Heights | +1</span>
+      <table>
+        <tr>
+          <td>
+            <span style="font-weight: 600; font-size: 14px; line-height: 12px;"><u>A</u>DDRESS</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">123 West Main Street,
+              SunnyDale City Heights</span>
+          </td>
+          <td>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px;">+1</span>
+          </td>
+        </tr>
+      </table>
     </div>
     <hr style="border-bottom: 3px solid #F3F3F3; border-top: none; border-left: none; border-right: none;" />
-    <div style="display: flex; align-items: center; padding: 2px; margin-top: 8px;">
+    <div style="display: flex; align-items: center; margin-top: 8px;">
       <span class="amds-icon amds-icon-preferred-phone"
         style="margin-left: 8px; color: #45668F; font-size: 12px;"></span>
-      <span style="margin-left: 8px; font-weight: 600; font-size: 14px; line-height: 12px;"><u>C</u>ONTACT</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">801-223-3245 |
-        patriciap@gmail.com</span>
+      <table>
+        <tr>
+          <td>
+            <span style="font-weight: 600; font-size: 14px; line-height: 12px;"><u>C</u>ONTACT</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">801-223-3245</span>
+          </td>
+          <td>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px;">patriciap@gmail.com</span>
+          </td>
+        </tr>
+      </table>
     </div>
     <hr style="border-bottom: 3px solid #F3F3F3; border-top: none; border-left: none; border-right: none;" />
-    <div style="display: flex; align-items: center; padding: 2px; margin-top: 8px;">
+    <div style="display: flex; align-items: center; margin-top: 8px;">
       <span class="amds-icon amds-icon-sex" style="margin-left: 8px; color: #45668F; font-size: 12px;"></span>
-      <span style="margin-left: 8px; font-weight: 600; font-size: 14px; line-height: 12px;"
-        matTooltip="Birth Sex"><u>S</u>EX</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">Female |</span>
-      <span style="margin-left: 4px; font-weight: 600; font-size: 14px; line-height: 12px;"
-        matTooltip="Self-Identified Gender Identity">SIGI</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">Female |</span>
-      <span style="margin-left: 4px; font-weight: 600; font-size: 14px; line-height: 12px;"
-        matTooltip="Sexual Orientation">SO</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">Straight |</span>
-      <span style="margin-left: 4px; font-weight: 600; font-size: 14px; line-height: 12px;"
-        matTooltip="Marital Status">MS</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">Married</span>
+      <table>
+        <tr>
+          <td>
+            <span style="font-weight: 600; font-size: 14px; line-height: 12px;" matTooltip="Birth Sex"><u>S</u>EX</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">Female</span>
+          </td>
+          <td><span style="font-weight: 600; font-size: 14px; line-height: 12px;"
+              matTooltip="Self-Identified Gender Identity">SIGI</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">Female</span>
+          </td>
+          <td><span style="font-weight: 600; font-size: 14px; line-height: 12px;"
+              matTooltip="Sexual Orientation">SO</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">Straight</span>
+          </td>
+          <td><span style="font-weight: 600; font-size: 14px; line-height: 12px;" matTooltip="Marital Status">MS</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">Married</span>
+          </td>
+        </tr>
+      </table>
     </div>
     <hr style="border-bottom: 3px solid #F3F3F3; border-top: none; border-left: none; border-right: none;" />
-    <div style="display: flex; align-items: center; padding: 2px; margin-top: 8px;">
+    <div style="display: flex; align-items: center; margin-top: 8px;">
       <span class="amds-icon amds-icon-race-alt" style="margin-left: 8px; color: #45668F; font-size: 12px;"></span>
-      <span style="margin-left: 8px; font-weight: 600; font-size: 14px; line-height: 12px;">RAC<u>E</u></span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">- |</span>
-      <span style="margin-left: 4px; font-weight: 600; font-size: 14px; line-height: 12px;">ETHNICITY</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">Not Hispanic |</span>
-      <span style="margin-left: 4px; font-weight: 600; font-size: 14px; line-height: 12px;">LANGUAGE</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">English</span>
+      <table>
+        <tr>
+          <td>
+            <span style="font-weight: 600; font-size: 14px; line-height: 12px;">RAC<u>E</u></span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">--</span>
+          </td>
+          <td><span style="font-weight: 600; font-size: 14px; line-height: 12px;">ETHNICITY</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">Not Hispanic</span>
+          </td>
+          <td><span style="font-weight: 600; font-size: 14px; line-height: 12px;">LANGUAGE</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">English</span>
+          </td>
+        </tr>
+      </table>
     </div>
     <hr style="border-bottom: 3px solid #F3F3F3; border-top: none; border-left: none; border-right: none;" />
-    <div style="display: flex; align-items: center; padding: 2px; margin-top: 8px;">
+    <div style="display: flex; align-items: center; margin-top: 8px;">
       <span class="amds-icon amds-icon-financial-class"
         style="margin-left: 8px; color: #45668F; font-size: 12px;"></span>
-      <span style="margin-left: 8px; font-weight: 600; font-size: 14px; line-height: 12px;"><u>F</u>INANCIAL
-        CLASS</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">SA |</span>
-      <span style="margin-left: 4px; font-weight: 600; font-size: 14px; line-height: 12px;">EMPLOYER</span>
-      <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">AdvancedMD</span>
+      <table>
+        <tr>
+          <td>
+            <span style="font-weight: 600; font-size: 14px; line-height: 12px;"><u>F</u>INANCIAL
+              CLASS</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">SA</span>
+          </td>
+          <td><span style="font-weight: 600; font-size: 14px; line-height: 12px;">EMPLOYER</span>
+            <span style="font-weight: 300; font-size: 14px; line-height: 12px; margin-left: 4px;">AdvancedMD</span>
+          </td>
+        </tr>
+      </table>
     </div>
   </amds-card-content>
 </amds-card>
@@ -97,8 +171,7 @@
 
 <amds-card borderColor="#A83104" cardIcon="insurance-card" titleText="Insurance" subtitleText="3">
   <amds-card-actions>
-    <button amds-card-button buttonIcon="plus-add" matTooltip="Add"
-      disabled="true" (click)="test()"></button>
+    <button amds-card-button buttonIcon="plus-add" matTooltip="Add" disabled="true" (click)="test()"></button>
     <button amds-card-button buttonIcon="filter" matTooltip="Filter" (click)="test()"></button>
     <button amds-card-button buttonIcon="ellipsis-horizontal" matTooltip="More"></button>
   </amds-card-actions>
