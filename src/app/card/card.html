@@ -1,10 +1,10 @@
-<span class="amds-card-colored-border" [style.border-color]="color"></span>
+<span class="amds-card-colored-border" [style.border-color]="borderColor"></span>
 <div class="amds-card-header">
   <span class="amds-icon amds-icon-dragndrop amds-card-drag-icon" title="Drag & drop"></span>
-  <span class="amds-card-icon" [ngClass]="'amds-svg-' + icon"></span>
+  <span class="amds-card-icon" [ngClass]="'amds-svg-' + cardIcon"></span>
   <span class="amds-card-header-text">
-    <span class="amds-card-title">{{title}}</span>
-    <span class="amds-card-subtitle">{{subTitle}}</span>
+    <span class="amds-card-title">{{titleText}}</span>
+    <span class="amds-card-subtitle">{{subTitleText}}</span>
   </span>
   <span style="flex-grow: 1;"></span>
   <ng-content select="amds-card-actions"></ng-content>

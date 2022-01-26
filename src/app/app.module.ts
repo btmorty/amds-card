@@ -10,6 +10,7 @@ import { AppComponent } from "./app.component";
 import { AmdsCardModule } from "./card";
 import { CommonModule } from "@angular/common";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatMenuModule } from "@angular/material/menu";
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,8 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     MaterialExampleModule,
     ReactiveFormsModule,
     AmdsCardModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

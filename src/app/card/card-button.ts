@@ -16,5 +16,5 @@ import { Component, ViewEncapsulation, ChangeDetectionStrategy, HostBinding, Inp
 export class AmdsCardButtonComponent {
   @HostBinding("class.amds-card-button") cardButtonClass = true;
   @HostBinding("[attr].disabled") disabled = false;
-  @Input() icon = "";
+  @Input() buttonIcon = "";
 }

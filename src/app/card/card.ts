@@ -51,8 +51,8 @@ export class AmdsCardContentDirective {
 })
 export class AmdsCardComponent {
   @HostBinding("class.amds-card") cardClass = true;
-  @Input() color = "";
-  @Input() icon = "";
-  @Input() title = "";
-  @Input() subTitle = "";
+  @Input() borderColor = "";
+  @Input() cardIcon = "";
+  @Input() titleText = "";
+  @Input() subTitleText = "";
 }

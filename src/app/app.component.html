@@ -1,6 +1,12 @@
-<amds-card color="#104784" icon="patient-card" title="Patient" subTitle="She, Her, Hers | Chart # 9443 | ID# 12333">
+<amds-card borderColor="#104784" cardIcon="patient-card" titleText="Patient" subtitleText="She, Her, Hers | Chart # 9443 | ID# 12333">
   <amds-card-actions>
-    <button amds-card-button icon="ellipsis-horizontal" matTooltip="More"></button>
+    <button amds-card-button [matMenuTriggerFor]="patientCardMenu" buttonIcon="ellipsis-horizontal" matTooltip="More"></button>
+    <mat-menu #patientCardMenu="matMenu" xPosition="before">
+      <button mat-menu-item>
+        <mat-icon>visibility_off</mat-icon>
+        <span>Hide Card</span>
+      </button>
+    </mat-menu>
   </amds-card-actions>
   <amds-card-content>
     <div style="display: flex; align-items: center; padding: 2px;">
@@ -46,7 +52,8 @@
     <hr style="border-bottom: 3px solid #F3F3F3; border-top: none; border-left: none; border-right: none;" />
     <div style="display: flex; align-items: center; padding: 2px; margin-top: 8px;">
       <span class="amds-icon amds-icon-sex" style="margin-left: 8px; color: #45668F; font-size: 12px;"></span>
-      <span style="margin-left: 8px; font-weight: 600; font-size: 14px; line-height: 12px;">BIRTH <u>S</u>EX</span>
+      <span style="margin-left: 8px; font-weight: 600; font-size: 14px; line-height: 12px;"
+        matTooltip="Birth Sex"><u>S</u>EX</span>
       <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">Female |</span>
       <span style="margin-left: 4px; font-weight: 600; font-size: 14px; line-height: 12px;"
         matTooltip="Self-Identified Gender Identity">SIGI</span>
@@ -54,7 +61,8 @@
       <span style="margin-left: 4px; font-weight: 600; font-size: 14px; line-height: 12px;"
         matTooltip="Sexual Orientation">SO</span>
       <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">Straight |</span>
-      <span style="margin-left: 4px; font-weight: 600; font-size: 14px; line-height: 12px;">MARITAL STATUS</span>
+      <span style="margin-left: 4px; font-weight: 600; font-size: 14px; line-height: 12px;"
+        matTooltip="Marital Status">MS</span>
       <span style="margin-left: 4px; font-weight: 300; font-size: 14px; line-height: 12px;">Married</span>
     </div>
     <hr style="border-bottom: 3px solid #F3F3F3; border-top: none; border-left: none; border-right: none;" />
@@ -80,38 +88,44 @@
   </amds-card-content>
 </amds-card>
 
-<amds-card color="#915788" icon="responsible-party-card" title="Resp Party">
+<amds-card borderColor="#915788" cardIcon="responsible-party-card" titleText="Resp Party">
+  <amds-card-actions>
+    <button amds-card-button buttonIcon="ellipsis-horizontal" matTooltip="More"></button>
+  </amds-card-actions>
   <amds-card-content>STUFF GOES HERE...</amds-card-content>
 </amds-card>
 
-<amds-card color="#A83104" icon="insurance-card" title="Insurance" subTitle="3">
+<amds-card borderColor="#A83104" cardIcon="insurance-card" titleText="Insurance" subtitleText="3">
   <amds-card-actions>
-    <button amds-card-button icon="plus-add" matTooltip="No permission to add insurance" matTooltipDisabled="false"
+    <button amds-card-button buttonIcon="plus-add" matTooltip="Add"
       disabled="true" (click)="test()"></button>
-    <button amds-card-button icon="filter" matTooltip="Filter" (click)="test()"></button>
-    <button amds-card-button icon="ellipsis-horizontal" matTooltip="More"></button>
+    <button amds-card-button buttonIcon="filter" matTooltip="Filter" (click)="test()"></button>
+    <button amds-card-button buttonIcon="ellipsis-horizontal" matTooltip="More"></button>
   </amds-card-actions>
   <amds-card-content>STUFF GOES HERE...</amds-card-content>
 </amds-card>
 
-<amds-card color="#5F5791" icon="care-team-card" title="Care Team">
-  <amds-card-content>STUFF GOES HERE...</amds-card-content>
-</amds-card>
-
-<amds-card color="#C30000" icon="referrals-card" title="Referrals" subTitle="8">
+<amds-card borderColor="#5F5791" cardIcon="care-team-card" titleText="Care Team">
   <amds-card-actions>
-    <button amds-card-button icon="plus-add" matTooltip="Add" (click)="test()"></button>
-    <button amds-card-button icon="filter" matTooltip="Filter" (click)="test()"></button>
-    <button amds-card-button icon="ellipsis-horizontal" matTooltip="More"></button>
+    <button amds-card-button buttonIcon="ellipsis-horizontal" matTooltip="More"></button>
   </amds-card-actions>
   <amds-card-content>STUFF GOES HERE...</amds-card-content>
 </amds-card>
 
-<amds-card color="#F59DCD" icon="marketing-card" title="Marketing" subTitle="1">
+<amds-card borderColor="#C30000" cardIcon="referrals-card" titleText="Referrals" subtitleText="8">
   <amds-card-actions>
-    <button amds-card-button icon="plus-add" matTooltip="Add" (click)="test()"></button>
-    <button amds-card-button icon="filter" matTooltip="Filter" (click)="test()"></button>
-    <button amds-card-button icon="ellipsis-horizontal" matTooltip="More"></button>
+    <button amds-card-button buttonIcon="plus-add" matTooltip="Add" (click)="test()"></button>
+    <button amds-card-button buttonIcon="filter" matTooltip="Filter" (click)="test()"></button>
+    <button amds-card-button buttonIcon="ellipsis-horizontal" matTooltip="More"></button>
+  </amds-card-actions>
+  <amds-card-content>STUFF GOES HERE...</amds-card-content>
+</amds-card>
+
+<amds-card borderColor="#F59DCD" cardIcon="marketing-card" titleText="Marketing" subtitleText="1">
+  <amds-card-actions>
+    <button amds-card-button buttonIcon="plus-add" matTooltip="Add" (click)="test()"></button>
+    <button amds-card-button buttonIcon="filter" matTooltip="Filter" (click)="test()"></button>
+    <button amds-card-button buttonIcon="ellipsis-horizontal" matTooltip="More"></button>
   </amds-card-actions>
   <amds-card-content>STUFF GOES HERE...</amds-card-content>
 </amds-card>
