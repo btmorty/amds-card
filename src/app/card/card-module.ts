@@ -2,14 +2,11 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import {
-  AmdsCard,
-  AmdsCardActions,
-  AmdsCardContent,
-  AmdsCardHeader,
-  AmdsCardSubtitle,
-  AmdsCardTitle,
-  AmdsCardButton,
+  AmdsCardComponent,
+  AmdsCardActionsDirective,
+  AmdsCardContentDirective,
 } from "./card";
+import { AmdsCardButtonComponent } from "./card-button";
 
 @NgModule({
   imports: [
@@ -17,22 +14,16 @@ import {
     MatTooltipModule
   ],
   exports: [
-    AmdsCard,
-    AmdsCardHeader,
-    AmdsCardContent,
-    AmdsCardTitle,
-    AmdsCardSubtitle,
-    AmdsCardActions,
-    AmdsCardButton,
+    AmdsCardComponent,
+    AmdsCardContentDirective,
+    AmdsCardActionsDirective,
+    AmdsCardButtonComponent,
   ],
   declarations: [
-    AmdsCard,
-    AmdsCardHeader,
-    AmdsCardContent,
-    AmdsCardTitle,
-    AmdsCardSubtitle,
-    AmdsCardActions,
-    AmdsCardButton,
+    AmdsCardComponent,
+    AmdsCardContentDirective,
+    AmdsCardActionsDirective,
+    AmdsCardButtonComponent,
   ],
 })
 export class AmdsCardModule { }

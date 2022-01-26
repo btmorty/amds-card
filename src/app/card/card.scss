@@ -1,12 +1,13 @@
 @use 'sass:math';
+@import url('https://amds-dev-material.s3-us-west-2.amazonaws.com/prerelease/prereleases/12/latest/amds-icons/amds-icons.css');
 
 $padding: 8px !default;
-$border-color: #85A7CA !default;
-$light-gray-color: #F5F5F5 !default;
+$border-color: #85a7ca !default;
+$light-gray-color: #f5f5f5 !default;
 $header-heght: 30px !default;
-$muted-gray-color: #CAD1DD !default;
-$default-button-color: #45668F !default;
-$add-button-color: #41912B !default;
+$muted-gray-color: #cad1dd !default;
+$default-button-color: #45668f !default;
+$add-button-color: #41912b !default;
 
 .amds-card {
   display: block;
@@ -68,15 +69,11 @@ $add-button-color: #41912B !default;
       display: none;
     }
     // DEFAULT ACTION BUTTON COLOR
-    .amds-card-actions
-    button:not(:disabled)
-    i:not(.amds-icon-plus-add){
+    button.amds-card-button:not(:disabled) i:not(.amds-icon-plus-add) {
       color: $default-button-color;
     }
     // PLUS ACTION BUTTON OVERRIDE
-    .amds-card-actions
-    button:not(:disabled)
-    i.amds-icon-plus-add {
+    button.amds-card-button:not(:disabled) i.amds-icon-plus-add {
       color: $add-button-color;
     }
   }
@@ -97,7 +94,7 @@ $add-button-color: #41912B !default;
       font-style: normal;
       font-weight: 600;
     }
-    
+
     .amds-card-subtitle {
       margin-left: 8px;
       font-size: 13px;
@@ -108,7 +105,7 @@ $add-button-color: #41912B !default;
 }
 
 .amds-card-header::after {
-  content: "";
+  content: '';
   position: absolute;
   top: $header-heght;
   right: 0;
@@ -117,46 +114,41 @@ $add-button-color: #41912B !default;
   z-index: 99;
 }
 
-// ACTIONS STYLES
+// CARD ACTIONS STYLES
 .amds-card-actions {
   display: flex;
   justify-content: flex-end;
   margin-left: math.div(-$padding, 2);
   margin-right: math.div(-$padding, 2);
   padding: $padding 0;
-
-  // ACTIONS ICON DEFAULT STYLE
-  button {
-    color: $muted-gray-color;
-  }
-
-  button:disabled {
-    cursor: default;
-    color: $muted-gray-color !important;
-  }
-
-  // ACTIONS ICON HOVER STYLE
-  button:hover:not(:disabled) {
-    background-color: $muted-gray-color;
-  }
 }
 
-.amds-card-actions {
-  button {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 8px;
-    font-size: 16px;
-    min-width: 0;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
-    border: none;
-    border-radius: 50%;
-    background-color: transparent;
-    cursor: pointer;
-  }
+// CARD BUTTON DEFAULT STYLE
+button.amds-card-button {
+  color: $muted-gray-color;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+  font-size: 16px;
+  min-width: 0;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+button.amds-card-button:disabled {
+  cursor: default;
+  color: $muted-gray-color !important;
+}
+
+// CARD BUTTON HOVER STYLE
+button.amds-card-button:hover:not(:disabled) {
+  background-color: $muted-gray-color;
 }
 
 // CONTENT STYLES
@@ -169,7 +161,8 @@ $add-button-color: #41912B !default;
 
 // top els in amds-card-content and amds-card can't have their default margin-tops (e.g. <p> tags)
 // or they'll incorrectly add to card's top padding
-.amds-card > :first-child, .amds-card-content > :first-child {
+.amds-card > :first-child,
+.amds-card-content > :first-child {
   margin-top: 0;
 }
 

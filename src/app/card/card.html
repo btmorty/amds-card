@@ -1,3 +1,12 @@
 <span class="amds-card-colored-border" [style.border-color]="color"></span>
-<ng-content select="amds-card-header"></ng-content>
+<div class="amds-card-header">
+  <span class="amds-icon amds-icon-dragndrop amds-card-drag-icon" title="Drag & drop"></span>
+  <span class="amds-card-icon" [ngClass]="'amds-svg-' + icon"></span>
+  <span class="amds-card-header-text">
+    <span class="amds-card-title">{{title}}</span>
+    <span class="amds-card-subtitle">{{subTitle}}</span>
+  </span>
+  <span style="flex-grow: 1;"></span>
+  <ng-content select="amds-card-actions"></ng-content>
+</div>
 <ng-content></ng-content>
