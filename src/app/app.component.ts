@@ -15,6 +15,21 @@ export class AppComponent {
   isLoading = true;
 
   constructor() {
+    this.initFramework();
+  }
+
+  test(): void {
+    console.log("THIS IS A TEST");
+  }
+
+  initFramework(): void {
+    this.isInitPatient = true;
+    this.isInitRespParty = true;
+    this.isInitInsurance = true;
+    this.isInitCareTeam = true;
+    this.isInitReferrals = true;
+    this.isInitMarketing = true;
+
     setTimeout(() => {
       this.isInitPatient = false;
     }, this.getRandomTimeoutValue());
@@ -38,10 +53,6 @@ export class AppComponent {
     setTimeout(() => {
       this.isInitMarketing = false;
     }, this.getRandomTimeoutValue());
-  }
-
-  test(): void {
-    console.log("THIS IS A TEST");
   }
 
   getRandomTimeoutValue(): number {
