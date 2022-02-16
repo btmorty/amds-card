@@ -55,4 +55,6 @@ export class AmdsCardComponent {
   @Input() cardIcon = "";
   @Input() titleText = "";
   @Input() subTitleText = "";
+  @Input() isInitializing = true;
+  @Input() isLoading = false;
 }

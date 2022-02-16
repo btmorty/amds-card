@@ -9,4 +9,5 @@
   <span style="flex-grow: 1;"></span>
   <ng-content select="amds-card-actions"></ng-content>
 </div>
-<ng-content></ng-content>
+<mat-progress-bar *ngIf="isLoading || isInitializing" mode="indeterminate" color="accent"></mat-progress-bar>
+<ng-content *ngIf="!isInitializing"></ng-content>
