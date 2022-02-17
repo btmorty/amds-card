@@ -7,11 +7,13 @@ import {
   AmdsCardContentDirective,
 } from "./card";
 import { AmdsCardButtonComponent } from "./card-button";
+import { NgScrollbarModule } from "ngx-scrollbar";
 
 @NgModule({
   imports: [
     CommonModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    NgScrollbarModule
   ],
   exports: [
     AmdsCardComponent,

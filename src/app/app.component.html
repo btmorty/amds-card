@@ -19,7 +19,7 @@
 </div>
 
 <amds-card borderColor="#104784" cardIcon="patient-card" titleText="Patient"
-  subtitleText="She, Her, Hers | Chart # 9443 | ID# 12333" [isInitializing]="isInitPatient">
+  subtitleText="She, Her, Hers | Chart # 9443 | ID# 12333" [isInitializing]="isInitPatient" [isLoading]="isPatientLoading">
   <amds-card-actions>
     <button amds-card-button [matMenuTriggerFor]="patientCardMenu" buttonIcon="ellipsis-horizontal"
       matTooltip="More"></button>
@@ -162,6 +162,9 @@
           </td>
         </tr>
       </table>
+    </div>
+    <div>
+      <button mat-button color="primary" (click)="onSavePatient()">Save</button>
     </div>
   </amds-card-content>
 </amds-card>

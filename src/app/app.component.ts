@@ -12,7 +12,7 @@ export class AppComponent {
   isInitCareTeam = true;
   isInitReferrals = true;
   isInitMarketing = true;
-  isLoading = true;
+  isPatientLoading = false;
 
   constructor() {
     this.initFramework();
@@ -59,6 +59,14 @@ export class AppComponent {
     const min: number = Math.ceil(1000);
     const max: number = Math.floor(6000);
     return Math.floor(Math.random() * (max - min) + min); // the maximum is exclusive and the minimum is inclusive
+  }
+
+  onSavePatient(): void {
+    this.isPatientLoading = true;
+
+    setTimeout(() => {
+      this.isPatientLoading = false;
+    }, this.getRandomTimeoutValue());
   }
 
 }

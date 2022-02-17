@@ -192,6 +192,11 @@ button.amds-card-button:hover:not(:disabled) {
   background-color: $muted-gray-color;
 }
 
+// SCROLL AREA
+.scroll-area {
+  height: calc($card-height - $header-heght - ($padding * 2));
+}
+
 // CONTENT STYLES
 .amds-card-content {
   display: block;
