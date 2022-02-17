@@ -17,7 +17,7 @@
 <div style="text-align: center;">
   <button mat-button (click)="initFramework()">Refresh All Cards</button>
 </div>
-
+<br />
 <amds-card borderColor="#104784" cardIcon="patient-card" titleText="Patient"
   subtitleText="She, Her, Hers | Chart # 9443 | ID# 12333" [isInitializing]="isInitPatient" [isLoading]="isPatientLoading">
   <amds-card-actions>
@@ -163,8 +163,8 @@
         </tr>
       </table>
     </div>
-    <div>
-      <button mat-button color="primary" (click)="onSavePatient()">Save</button>
+    <div style="text-align: right;">
+      <button mat-stroked-button color="primary" (click)="onSavePatient()">Save</button>
     </div>
   </amds-card-content>
 </amds-card>
@@ -173,7 +173,6 @@
   <amds-card-actions>
     <button amds-card-button buttonIcon="ellipsis-horizontal" matTooltip="More"></button>
   </amds-card-actions>
-  <amds-card-content>STUFF GOES HERE...</amds-card-content>
 </amds-card>
 
 <amds-card borderColor="#A83104" cardIcon="insurance-card" titleText="Insurance" subtitleText="3" [isInitializing]="isInitInsurance">
@@ -182,14 +181,12 @@
     <button amds-card-button buttonIcon="filter" matTooltip="Filter" (click)="test()"></button>
     <button amds-card-button buttonIcon="ellipsis-horizontal" matTooltip="More"></button>
   </amds-card-actions>
-  <amds-card-content>STUFF GOES HERE...</amds-card-content>
 </amds-card>
 
 <amds-card borderColor="#5F5791" cardIcon="care-team-card" titleText="Care Team" [isInitializing]="isInitCareTeam">
   <amds-card-actions>
     <button amds-card-button buttonIcon="ellipsis-horizontal" matTooltip="More"></button>
   </amds-card-actions>
-  <amds-card-content>STUFF GOES HERE...</amds-card-content>
 </amds-card>
 
 <amds-card borderColor="#C30000" cardIcon="referrals-card" titleText="Referrals" subtitleText="8" [isInitializing]="isInitReferrals">
@@ -198,7 +195,6 @@
     <button amds-card-button buttonIcon="filter" matTooltip="Filter" (click)="test()"></button>
     <button amds-card-button buttonIcon="ellipsis-horizontal" matTooltip="More"></button>
   </amds-card-actions>
-  <amds-card-content>STUFF GOES HERE...</amds-card-content>
 </amds-card>
 
 <amds-card borderColor="#F59DCD" cardIcon="marketing-card" titleText="Marketing" subtitleText="1" [isInitializing]="isInitMarketing">
@@ -207,5 +203,4 @@
     <button amds-card-button buttonIcon="filter" matTooltip="Filter" (click)="test()"></button>
     <button amds-card-button buttonIcon="ellipsis-horizontal" matTooltip="More"></button>
   </amds-card-actions>
-  <amds-card-content>STUFF GOES HERE...</amds-card-content>
 </amds-card>
