@@ -9,5 +9,14 @@
   <span style="flex-grow: 1;"></span>
   <ng-content select="amds-card-actions"></ng-content>
 </div>
-<mat-progress-bar *ngIf="isLoading || isInitializing" mode="indeterminate" color="accent"></mat-progress-bar>
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate" color="accent"></mat-progress-bar>
+<div *ngIf="isInitializing" class="skeleton-container">
+  <span class="skeleton-box"></span>
+  <span class="skeleton-box"></span>
+  <span class="skeleton-box"></span>
+  <span class="skeleton-box"></span>
+  <span class="skeleton-box"></span>
+  <span class="skeleton-box"></span>
+  <span class="skeleton-box"></span>
+</div>
 <ng-content *ngIf="!isInitializing"></ng-content>
