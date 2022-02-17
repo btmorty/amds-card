@@ -194,7 +194,7 @@ button.amds-card-button:hover:not(:disabled) {
 
 // SCROLL AREA
 .scroll-area {
-  height: calc($card-height - $header-heght - ($padding * 2));
+  max-height: calc($card-height - $header-heght) !important;
 }
 
 // CONTENT STYLES
