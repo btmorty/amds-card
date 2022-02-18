@@ -1,11 +1,12 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { DragulaService } from "ng2-dragula";
 
 @Component({
   selector: "amds-root",
   templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-
   isInitPatient = true;
   isInitRespParty = true;
   isInitInsurance = true;
@@ -14,7 +15,13 @@ export class AppComponent {
   isInitMarketing = true;
   isPatientLoading = false;
 
-  constructor() {
+
+  constructor(private dragulaService: DragulaService) {
+    this.dragulaService.createGroup("CARDS", {
+      revertOnSpill: true,
+      moves: (el, container, handle) => { return handle?.classList.contains("amds-icon-dragndrop") ?? false; }
+    });
+
     this.initFramework();
   }
 

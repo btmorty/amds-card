@@ -10,8 +10,6 @@ $default-button-color: #45668f !default;
 $add-button-color: #41912b !default;
 $card-min-height: 96px;
 $card-min-width: 300px;
-$card-height: 340px;
-$card-content-height: calc($card-height - $header-height);
 $skeleton-box-height: 32px;
 
 .skeleton-container {
@@ -57,7 +55,6 @@ $skeleton-box-height: 32px;
   position: relative;
   min-width: $card-min-width;
   min-height: $card-min-height;
-  height: $card-height;
   margin-bottom: 8px;
 
   .amds-card-colored-border {
@@ -71,6 +68,19 @@ $skeleton-box-height: 32px;
     border-color: #888 #888 currentcolor;
     border-top: 2px solid #888;
     pointer-events: none;
+  }
+
+  // Progress Bar 
+  .mat-progress-bar {
+    height: 2px !important;
+
+    .mat-progress-bar-buffer {
+      background-color: #fbe5bc;
+    }
+
+    .mat-progress-bar-fill::after {
+      background-color: #ffa600;
+    }
   }
 }
 
@@ -196,12 +206,7 @@ button.amds-card-button:hover:not(:disabled) {
   background-color: $muted-gray-color;
 }
 
-// SCROLL AREA
-.scroll-area {
-  height: $card-content-height !important;
-}
-
-// CONTENT STYLES
+// CARD CONTENT STYLES
 .amds-card-content {
   display: block;
   padding-top: $padding;

@@ -19,6 +19,6 @@
   <span class="skeleton-box"></span>
   <span class="skeleton-box"></span>
 </div>
-<ng-scrollbar *ngIf="!isInitializing" class="scroll-area">
+<ng-scrollbar *ngIf="!isInitializing" [autoHeightDisabled]="false">
   <ng-content></ng-content>
 </ng-scrollbar>

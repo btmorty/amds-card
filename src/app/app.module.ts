@@ -11,6 +11,7 @@ import { AmdsCardModule } from "./card";
 import { CommonModule } from "@angular/common";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatMenuModule } from "@angular/material/menu";
+import { DragulaModule } from "ng2-dragula";
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,8 @@ import { MatMenuModule } from "@angular/material/menu";
     ReactiveFormsModule,
     AmdsCardModule,
     MatTooltipModule,
-    MatMenuModule
+    MatMenuModule,
+    DragulaModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
