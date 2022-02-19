@@ -1,11 +1,8 @@
 gridster {
-  display: flex;
   background: #ffffff;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
 
   gridster-item {
-    padding: 3px;
+    border-top-right-radius: 8px;
+    overflow:visible;
   }
 }

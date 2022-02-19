@@ -11,14 +11,10 @@
 </div>
 <mat-progress-bar *ngIf="isLoading" mode="indeterminate" color="accent" style="position: absolute;"></mat-progress-bar>
 <div *ngIf="isInitializing" class="skeleton-container">
-  <span class="skeleton-box"></span>
-  <span class="skeleton-box"></span>
-  <span class="skeleton-box"></span>
-  <span class="skeleton-box"></span>
-  <span class="skeleton-box"></span>
-  <span class="skeleton-box"></span>
-  <span class="skeleton-box"></span>
+  <span *ngFor="let _ of [].constructor((rows - 1))" class="skeleton-box"></span>
 </div>
-<ng-scrollbar *ngIf="!isInitializing" [autoHeightDisabled]="false">
+
+<!-- [autoHeightDisabled]="false" [autoWidthDisabled]="false" -->
+<ng-scrollbar *ngIf="!isInitializing" class="scroll-area">
   <ng-content></ng-content>
 </ng-scrollbar>

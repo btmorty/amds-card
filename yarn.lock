@@ -1695,6 +1695,13 @@ ajv@^8.0.0, ajv@^8.8.0:
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
+angular-gridster2@^12.1.1:
+  version "12.1.1"
+  resolved "https://registry.yarnpkg.com/angular-gridster2/-/angular-gridster2-12.1.1.tgz#699cd0a2477b81b052f6bd7b336ba7cc2adc8bc3"
+  integrity sha512-HK7vf212LSn7mp8g4sNA6/X8TQN4wJyHupKemx+PUPmTs6FHDyquUMUFXYxANR47jdyLEMW/DxCDI0bEhIIChw==
+  dependencies:
+    tslib "^2.1.0"
+
 ansi-colors@4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.1.tgz#cbb9ae256bf750af1eab344f229aa27fe94ba348"

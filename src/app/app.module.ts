@@ -11,7 +11,13 @@ import { AmdsCardModule } from "./card";
 import { CommonModule } from "@angular/common";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatMenuModule } from "@angular/material/menu";
-import { DragulaModule } from "ng2-dragula";
+import { AmdsPatientCardModule } from './patient-card/patient-card.module';
+import { AmdsInsuranceCardModule } from './insurance-card/insurance-card.module';
+import { AmdsCareTeamCardModule } from './care-team-card/care-team-card.module';
+import { AmdsRespPartyCardModule } from './resp-party-card/resp-party-card.module';
+import { AmdsReferralCardModule } from './referral-card/referral-card.module';
+import { AmdsMarketingCardModule } from './marketing-card/marketing-card.module';
+import { GridsterModule } from 'angular-gridster2';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,10 +30,15 @@ import { DragulaModule } from "ng2-dragula";
     MatNativeDateModule,
     MaterialExampleModule,
     ReactiveFormsModule,
-    AmdsCardModule,
+    AmdsPatientCardModule,
+    AmdsRespPartyCardModule,
+    AmdsInsuranceCardModule,
+    AmdsCareTeamCardModule,
+    AmdsReferralCardModule,
+    AmdsMarketingCardModule,
     MatTooltipModule,
     MatMenuModule,
-    DragulaModule.forRoot()
+    GridsterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,7 +8,7 @@ $header-height: 30px !default;
 $muted-gray-color: #cad1dd !default;
 $default-button-color: #45668f !default;
 $add-button-color: #41912b !default;
-$card-min-height: 96px;
+$card-min-height: 60px;
 $card-min-width: 300px;
 $skeleton-box-height: 32px;
 
@@ -55,6 +55,8 @@ $skeleton-box-height: 32px;
   position: relative;
   min-width: $card-min-width;
   min-height: $card-min-height;
+  width: 100%;
+  height: 100%;
   margin-bottom: 8px;
 
   .amds-card-colored-border {
@@ -204,6 +206,11 @@ button.amds-card-button:disabled {
 // CARD BUTTON HOVER STYLE
 button.amds-card-button:hover:not(:disabled) {
   background-color: $muted-gray-color;
+}
+
+// scroll content height override
+.scroll-area {
+  height: calc(100% - 30px) !important;
 }
 
 // CARD CONTENT STYLES

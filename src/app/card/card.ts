@@ -57,4 +57,5 @@ export class AmdsCardComponent {
   @Input() subTitleText = "";
   @Input() isInitializing = true;
   @Input() isLoading = false;
+  @Input() rows = 2;
 }
