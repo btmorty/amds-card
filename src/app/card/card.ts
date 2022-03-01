@@ -58,4 +58,6 @@ export class AmdsCardComponent {
   @Input() isInitializing = true;
   @Input() isLoading = false;
   @Input() rows = 2;
+  @Input() emptyState = false;
+  @Input() emptyStateMessage = "";
 }
