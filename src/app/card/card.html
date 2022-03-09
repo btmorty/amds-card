@@ -17,11 +17,15 @@
   <span *ngFor="let _ of [].constructor((rows - 1)); even as even; odd as odd" class="skeleton-box" [ngClass]="{ 'skeleton-box-100': even, 'skeleton-box-85': odd }"></span>
 </div>
 
-<div *ngIf="!isInitializing && emptyState" style="text-align: center; color: #B0B0B0">
+<div *ngIf="!isInitializing && isInitialSate && initialStateMessage" style="text-align: center; color: #B0B0B0">
+  <span>{{initialStateMessage}}</span>
+</div>
+
+<div *ngIf="!isInitializing && !isInitialSate && isEmptyState && emptyStateMessage" style="text-align: center; color: #B0B0B0">
   <span>{{emptyStateMessage}}</span>
 </div>
 
 <!-- [autoHeightDisabled]="false" [autoWidthDisabled]="false" -->
-<ng-scrollbar *ngIf="!isInitializing && !emptyState" class="scroll-area">
+<ng-scrollbar *ngIf="!isInitializing && !isInitialSate && !isEmptyState" class="scroll-area">
   <ng-content></ng-content>
 </ng-scrollbar>

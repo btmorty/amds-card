@@ -51,13 +51,57 @@ export class AmdsCardContentDirective {
 })
 export class AmdsCardComponent {
   @HostBinding("class.amds-card") cardClass = true;
+  /**
+   * string value of the hex color code that controls the main card border color. 
+   */
   @Input() borderColor = "";
+
+  /**
+   * string value of the name of the svg icon to use as the main card icon.
+   */
   @Input() cardIcon = "";
+
+  /**
+   * string value of the card title.
+   */
   @Input() titleText = "";
+
+  /**
+   * string value of the card sub-title.
+   */
   @Input() subTitleText = "";
-  @Input() isInitializing = true;
-  @Input() isLoading = false;
+
+  /**
+   * number value that should be synced with the number of gridster rows the card is filling.
+   */
   @Input() rows = 2;
-  @Input() emptyState = false;
-  @Input() emptyStateMessage = "";
+
+  /**
+   * boolean value to indicate the card has not fetched any data yet. 
+   */
+  @Input() isInitialSate = true;
+
+  /**
+   * optional string value containing the message to show when before card is first rendered and no data has been fetched yet.
+   */
+  @Input() initialStateMessage: string | undefined;
+  /**
+   * boolean value to indicate card has not data to display.
+   */
+  @Input() isEmptyState = false;
+
+  /**
+   * optional string value containing the message to be displayed when there is no data.
+   */
+  @Input() emptyStateMessage: string | undefined;
+
+  /**
+   * boolean value to indicate card is doing initial fecth of data.
+  */
+  @Input() isInitializing = true;
+
+  /**
+   * boolean value to indicate card is performing a backend task.
+   */
+  @Input() isLoading = false;
 }

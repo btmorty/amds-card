@@ -6,7 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./resp-party-card.component.scss']
 })
 export class RespPartyCardComponent implements OnInit {
-  @Input() isInitializing = true;
+  @Input() isInitialState = true;
+  @Input() isInitializing = false;
   @Input() rows: number;
 
   constructor() { }

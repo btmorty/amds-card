@@ -6,7 +6,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./patient-card.component.scss']
 })
 export class PatientCardComponent {
-  @Input() isInitializing = true;
+  @Input() isInitialState = true;
+  @Input() initialStateMessage: string | undefined;
+  @Input() isInitializing = false;
+  @Input() isEmptyState = false;
   @Input() isLoading = false;
   @Input() rows: number;
 

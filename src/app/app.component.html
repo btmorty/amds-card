@@ -15,16 +15,17 @@
 </style>
 
 <div style="text-align: center;">
-  <button mat-button (click)="initFramework()">Refresh All Cards</button>
+  <button mat-raised-button color="primary" (click)="selectPatient()">Select Patient</button>
+  <button mat-raised-button color="accent" (click)="deselectPatient()" style="margin-left: 16px;">Deselect Patient</button>
 </div>
 <br />
 <gridster [options]="options">
   <gridster-item [item]="items[0]">
-    <amds-patient-card [isInitializing]="isInitPatient" [isLoading]="isPatientLoading" [rows]="items[0].rows"></amds-patient-card>
+    <amds-patient-card [isInitialState]="isInitialState" [isInitializing]="isInitPatient" [isEmptyState]="isEmptyPatient" [isLoading]="isPatientLoading" [rows]="items[0].rows"></amds-patient-card>
   </gridster-item>
 
   <gridster-item [item]="items[1]">
-    <amds-resp-party-card [isInitializing]="isInitRespParty" [rows]="items[1].rows"></amds-resp-party-card>
+    <amds-resp-party-card [isInitialState]="isInitialState" [isInitializing]="isInitRespParty" [rows]="items[1].rows"></amds-resp-party-card>
   </gridster-item>
 
   <gridster-item [item]="items[2]">

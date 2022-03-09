@@ -10,13 +10,26 @@ export class AppComponent {
   options: GridsterConfig;
   items: Array<GridsterItem>;
   
-  isInitPatient = true;
+  isInitialState = true;
+
+  isInitPatient = false;
+  isEmptyPatient = false;
   isPatientLoading = false;
-  isInitRespParty = true;
-  isInitInsurance = true;
-  isInitCareTeam = true;
-  isInitReferral = true;
-  isInitMarketing = true;
+
+  isInitRespParty = false;
+  isEmptyRespParty = false;
+
+  isInitInsurance = false;
+  isEmptyInsurance = false;
+
+  isInitCareTeam = false;
+  isEmptyCareTeam = false;
+
+  isInitReferral = false;
+  isEmptyReferral = false;
+
+  isInitMarketing = false;
+  isEmptyMarketing = false;
 
 
   constructor() {
@@ -45,8 +58,6 @@ export class AppComponent {
       {cols: 1, rows: 2, y: 0, x: 0},
       {cols: 1, rows: 2, y: 0, x: 0},
     ];
-
-    this.initFramework();
   }
 
   test(): void {
@@ -54,7 +65,8 @@ export class AppComponent {
   }
 
   // simulate initial load
-  initFramework(): void {
+  selectPatient(): void {
+    this.isInitialState = false;
     this.isInitPatient = true;
     this.isInitRespParty = true;
     this.isInitInsurance = true;
@@ -68,26 +80,35 @@ export class AppComponent {
 
     setTimeout(() => {
       this.isInitRespParty = false;
+      this.isEmptyRespParty = true;
     }, this.getRandomTimeoutValue());
 
     setTimeout(() => {
       this.isInitInsurance = false;
+      this.isEmptyInsurance = true;
     }, this.getRandomTimeoutValue());
 
     setTimeout(() => {
       this.isInitCareTeam = false;
+      this.isEmptyCareTeam = true;
     }, this.getRandomTimeoutValue());
 
     setTimeout(() => {
       this.isInitReferral = false;
+      this.isEmptyReferral = true;
     }, this.getRandomTimeoutValue());
 
     setTimeout(() => {
       this.isInitMarketing = false;
+      this.isEmptyMarketing = true;
     }, this.getRandomTimeoutValue());
   }
 
-  getRandomTimeoutValue(): number {
+  deselectPatient(): void {
+    this.isInitialState = true;
+  }
+
+  private getRandomTimeoutValue(): number {
     const min: number = Math.ceil(1000);
     const max: number = Math.floor(6000);
     return Math.floor(Math.random() * (max - min) + min); // the maximum is exclusive and the minimum is inclusive
