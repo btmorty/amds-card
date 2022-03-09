@@ -58,6 +58,22 @@ $skeleton-box-height: 24px;
   }
 }
 
+// Custom resize handle
+.gridster-item-resizable-handler.handle-se {
+  cursor: se-resize;
+  width: 10px;
+  height: 10px;
+  right: 0;
+  bottom: 0;
+  border-style: double;
+  border-width: 0 2px 2px 0;
+  border-color: transparent;
+}
+
+gridster-item:hover .gridster-item-resizable-handler.handle-se {
+  border-color: #85A7CA !important;
+}
+
 .amds-card {
   display: block;
   position: relative;
