@@ -59,19 +59,32 @@ $skeleton-box-height: 24px;
 }
 
 // Custom resize handle
+gridster-item:hover .gridster-item-resizable-handler.handle-se {
+  border-color: #85A7CA !important;
+}
+
 .gridster-item-resizable-handler.handle-se {
   cursor: se-resize;
-  width: 10px;
-  height: 10px;
   right: 0;
-  bottom: 0;
-  border-style: double;
-  border-width: 0 2px 2px 0;
+  bottom: -1px;
+  width: 20px;
+  height: 20px;
+  border-top: none;
+  border-left: none;
+  border-bottom: 3px solid #4178be;
+  border-right: 3px solid #4178be;
   border-color: transparent;
 }
 
-gridster-item:hover .gridster-item-resizable-handler.handle-se {
-  border-color: #85A7CA !important;
+.gridster-item-resizable-handler.handle-s:hover {
+  border-bottom: 1px solid #aaa;
+  bottom: -1px;
+}
+
+.gridster-item-resizable-handler.handle-e:hover {
+  border-right: 1px solid #aaa;
+  top: 45px;
+  bottom: 22px;
 }
 
 .amds-card {
