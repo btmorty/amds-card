@@ -17,11 +17,11 @@
   <span *ngFor="let _ of [].constructor((rows - 1)); even as even; odd as odd" class="skeleton-box" [ngClass]="{ 'skeleton-box-100': even, 'skeleton-box-85': odd }"></span>
 </div>
 
-<div *ngIf="!isInitializing && isInitialSate && initialStateMessage" style="text-align: center; color: #B0B0B0">
+<div *ngIf="!isInitializing && isInitialSate && initialStateMessage" class="amds-card-empty-state-text">
   <span>{{initialStateMessage}}</span>
 </div>
 
-<div *ngIf="!isInitializing && !isInitialSate && isEmptyState && emptyStateMessage" style="text-align: center; color: #B0B0B0">
+<div *ngIf="!isInitializing && !isInitialSate && isEmptyState && emptyStateMessage" class="amds-card-empty-state-text">
   <span>{{emptyStateMessage}}</span>
 </div>
 

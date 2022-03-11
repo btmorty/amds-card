@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ReferralCardComponent implements OnInit {
   @Input() isInitializing = true;
+  @Input() isInitialState = true;
   @Input() rows: number;
 
   constructor() { }
