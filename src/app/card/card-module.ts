@@ -8,11 +8,13 @@ import {
 } from "./card";
 import { AmdsCardButtonComponent } from "./card-button";
 import { NgScrollbarModule } from "ngx-scrollbar";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @NgModule({
   imports: [
     CommonModule,
     MatProgressBarModule,
+    MatTooltipModule,
     NgScrollbarModule
   ],
   exports: [

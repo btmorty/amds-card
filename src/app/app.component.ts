@@ -36,6 +36,17 @@ export class AppComponent {
   isInitMarketing = false;
   isEmptyMarketing = false;
 
+  get isAppInit() {
+    return (
+      this.isInitPatient ||
+      this.isInitRespParty ||
+      this.isInitInsurance ||
+      this.isInitCareTeam ||
+      this.isInitReferral ||
+      this.isInitMarketing
+    );
+  }
+
   constructor() {
     this.options = {
       gridType: GridType.Fixed,

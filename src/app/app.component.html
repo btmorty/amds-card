@@ -20,6 +20,7 @@
     Patient</button>
 </div>
 <br />
+<mat-progress-bar *ngIf="isAppInit" mode="indeterminate" color="accent"></mat-progress-bar>
 <gridster [options]="options">
   <gridster-item *ngFor="let item of items" [item]="item">
     <ng-container [ngSwitch]="item.id">
