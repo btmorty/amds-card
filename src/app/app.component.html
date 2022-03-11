@@ -16,31 +16,30 @@
 
 <div style="text-align: center;">
   <button mat-raised-button color="primary" (click)="selectPatient()">Select Patient</button>
-  <button mat-raised-button color="accent" (click)="deselectPatient()" style="margin-left: 16px;">Deselect Patient</button>
+  <button mat-raised-button color="accent" (click)="deselectPatient()" style="margin-left: 16px;">Deselect
+    Patient</button>
 </div>
 <br />
 <gridster [options]="options">
-  <gridster-item [item]="items[0]">
-    <amds-patient-card [isInitialState]="isInitialState" [isInitializing]="isInitPatient" [isEmptyState]="isEmptyPatient" [isLoading]="isPatientLoading" [rows]="items[0].rows"></amds-patient-card>
-  </gridster-item>
+  <gridster-item *ngFor="let item of items" [item]="item">
+    <ng-container [ngSwitch]="item.id">
+      <amds-patient-card *ngSwitchCase="'PAT'" [isInitialState]="isInitialState" [isInitializing]="isInitPatient"
+        [isEmptyState]="isEmptyPatient" [isLoading]="isPatientLoading" [rows]="item.rows"></amds-patient-card>
 
-  <gridster-item [item]="items[1]">
-    <amds-resp-party-card [isInitialState]="isInitialState" [isInitializing]="isInitRespParty" [rows]="items[1].rows"></amds-resp-party-card>
-  </gridster-item>
+      <amds-resp-party-card *ngSwitchCase="'RSP'" [isInitialState]="isInitialState" [isInitializing]="isInitRespParty"
+        [rows]="item.rows"></amds-resp-party-card>
 
-  <gridster-item [item]="items[2]">
-    <amds-insurance-card [isInitialState]="isInitialState" [isInitializing]="isInitInsurance" [rows]="items[2].rows"></amds-insurance-card>
-  </gridster-item>
+      <amds-insurance-card *ngSwitchCase="'INS'" [isInitialState]="isInitialState" [isInitializing]="isInitInsurance"
+        [rows]="item.rows"></amds-insurance-card>
 
-  <gridster-item [item]="items[3]">
-    <amds-care-team-card [isInitialState]="isInitialState" [isInitializing]="isInitCareTeam" [rows]="items[3].rows"></amds-care-team-card>
-  </gridster-item>
+      <amds-care-team-card *ngSwitchCase="'CRT'" [isInitialState]="isInitialState" [isInitializing]="isInitCareTeam"
+        [rows]="item.rows"></amds-care-team-card>
 
-  <gridster-item [item]="items[4]">
-    <amds-referral-card [isInitialState]="isInitialState" [isInitializing]="isInitReferral" [rows]="items[4].rows"></amds-referral-card>
-  </gridster-item>
+      <amds-referral-card *ngSwitchCase="'REF'" [isInitialState]="isInitialState" [isInitializing]="isInitReferral"
+        [rows]="item.rows"></amds-referral-card>
 
-  <gridster-item [item]="items[5]">
-    <amds-marketing-card [isInitialState]="isInitialState" [isInitializing]="isInitMarketing" [rows]="items[5].rows"></amds-marketing-card>
+      <amds-marketing-card *ngSwitchCase="'MRK'" [isInitialState]="isInitialState" [isInitializing]="isInitMarketing"
+        [rows]="item.rows"></amds-marketing-card>
+    </ng-container>
   </gridster-item>
 </gridster>

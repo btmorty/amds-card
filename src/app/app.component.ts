@@ -1,15 +1,15 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   CompactType,
   GridsterConfig,
   GridsterItem,
   GridType,
-} from "angular-gridster2";
+} from 'angular-gridster2';
 
 @Component({
-  selector: "amds-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+  selector: 'amds-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   options: GridsterConfig;
@@ -47,7 +47,7 @@ export class AppComponent {
       draggable: {
         enabled: true,
         ignoreContent: true,
-        dragHandleClass: "amds-card-drag-icon",
+        dragHandleClass: 'amds-card-drag-icon',
       },
       pushItems: true,
       resizable: {
@@ -56,17 +56,17 @@ export class AppComponent {
     };
 
     this.items = [
-      { id: "PAT", cols: 1, rows: 8, y: 0, x: 0, minItemRows: 8 },
-      { id: "RSP", cols: 1, rows: 8, y: 0, x: 0, minItemRows: 8 },
-      { id: "INS", cols: 1, rows: 4, y: 0, x: 0 },
-      { id: "CRT", cols: 1, rows: 4, y: 0, x: 0 },
-      { id: "REF", cols: 1, rows: 4, y: 0, x: 0 },
-      { id: "MRK", cols: 1, rows: 4, y: 0, x: 0 },
+      { id: 'PAT', cols: 1, rows: 8, y: 0, x: 0, minItemRows: 8 },
+      { id: 'RSP', cols: 1, rows: 8, y: 0, x: 0, minItemRows: 8 },
+      { id: 'INS', cols: 1, rows: 4, y: 0, x: 0 },
+      { id: 'CRT', cols: 1, rows: 4, y: 0, x: 0 },
+      { id: 'REF', cols: 1, rows: 4, y: 0, x: 0 },
+      { id: 'MRK', cols: 1, rows: 4, y: 0, x: 0 },
     ];
   }
 
   test(): void {
-    console.log("THIS IS A TEST");
+    console.log('THIS IS A TEST');
   }
 
   // simulate initial load
