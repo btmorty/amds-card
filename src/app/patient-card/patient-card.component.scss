@@ -1,0 +1,65 @@
+table {
+  margin-left: 4px;
+  border-spacing: 0;
+}
+
+table td {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+table td + td {
+  border-left: 1px solid black;
+}
+
+.section-header {
+  background-color: #f9f9f9;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 12px;
+  margin-top: 16px;
+}
+
+.section-header-menu {
+  background: #EFEFEF;
+  height: 20px;
+  border-bottom-left-radius: 8px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 12px;
+
+  .section-header-badge {
+    background: #ffffff;
+    width: 16px; 
+    height: 16px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    margin: 4px;
+  }
+
+  button.add-button {
+    color: #45668F;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+    margin-right: 4px;
+    font-size: 16px;
+    min-width: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  button.add-button:hover:not(:disabled) {
+    background-color: #cad1dd;
+  }
+}

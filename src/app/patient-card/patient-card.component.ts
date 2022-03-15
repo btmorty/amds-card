@@ -12,6 +12,7 @@ export class PatientCardComponent {
   @Input() isEmptyState = false;
   @Input() isLoading = false;
   @Input() rows: number;
+  @Input() isReadOnly = false;
 
   onSavePatient(): void {
     this.isLoading = true;
