@@ -12,7 +12,7 @@
     </mat-menu>
   </amds-card-actions>
   <amds-card-content>
-    <div *ngIf="isReadOnly">
+    <!-- <div *ngIf="isReadOnly">
       <div style="display: flex; align-items: center;">
         <span class="amds-icon amds-icon-patient-name"
           style="margin-left: 8px; color: #45668F; font-size: 12px;"></span>
@@ -152,130 +152,135 @@
           </tr>
         </table>
       </div>
+    </div> -->
+    <div class="patient-header">
+      <div class="patient-header-item">
+        <div class="patient-status-active"></div>
+        <span>Active</span>
+      </div>
+      <div class="patient-header-item">
+        <span>She, Her, Hers</span>
+      </div>
+      <div class="patient-header-item">
+        <span>Chart# 9443</span>
+      </div>
+      <div class="patient-header-item">
+        <span>ID# 12333</span>
+      </div>
     </div>
-    <div *ngIf="!isReadOnly">
-      <div style="display: flex; flex-wrap: wrap; width: 100%; font-weight: 400; font-size: 14px; line-height: 12px;">
-        <div style="background-color: white; text-align: center; padding: 8px; border-right: #45668F solid 1px;">
-          <div style="display: inline-block; background-color: #41912B; width: 9px; height: 9px; margin-right: 0.5rem;">
+
+    <div class="section-header" [ngClass]="nameActive ? 'active' : '' "
+      style="display: flex; flex-direction: row; align-items: center; height: 20px;">
+      <div style="padding-top: 4px; padding-bottom: 4px;">
+        <button class="section-expand" matTooltip="Expand Section" (click)="toggleNameSectionActive()">
+          <i class="amds-icon amds-icon-angle-down"></i>
+        </button>
+        <span class="amds-icon amds-icon-patient-name"
+          style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
+        <span *ngIf="nameActive" class="header-label"><u>N</u>AME</span>
+        <div *ngIf="!nameActive" class="section-detail">
+          <div class="section-detail-item">
+            <span class="header-label"><u>N</u>ame</span>
+            <span class="header-text">Paula Smith</span>
           </div>
-          <span>Active</span>
-        </div>
-        <div style="background-color: white; text-align: center; padding: 8px; border-right: #45668F solid 1px;">
-          <span>She, Her, Hers</span>
-        </div>
-        <div style="background-color: white; text-align: center; padding: 8px; border-right: #45668F solid 1px;">
-          <span>Chart# 9443</span>
-        </div>
-        <div style="background-color: white; text-align: center; padding: 8px;">
-          <span>ID# 12333</span>
-        </div>
-      </div>
-
-      <div class="section-header" style="display: flex; flex-direction: row; align-items: center; height: 20px;">
-        <div style="padding-top: 4px; padding-bottom: 4px;">
-          <span class="amds-icon amds-icon-angle-down"
-            style="margin-left: 8px; margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-          <span class="amds-icon amds-icon-patient-name"
-            style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-          <span><u>N</u>AME</span>
-        </div>
-        <div style="flex: 1 auto;"></div>
-        <div class="section-header-menu">
-          <div class="section-header-badge">
-            <span>1</span>
+          <div class="section-detail-item">
+            <span class="header-text">Pat Milly Smith</span>
           </div>
-          <span>OTHER</span>
-          <svg style="margin-left: 8px;" width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M0.105125 6.22627L5.73496 0.626226C5.80528 0.541839 5.89691 0.5 6.00984 0.5C6.10787 0.5 6.19878 0.54184 6.28331 0.626226L6.87357 1.21623C6.95809 1.29991 7 1.39777 7 1.51052C7 1.60838 6.95809 1.69986 6.87357 1.78425L2.15079 6.5L6.87357 11.2363C6.95809 11.3207 7 11.4115 7 11.51C7 11.6079 6.95809 11.6994 6.87357 11.7838L6.28331 12.3943C6.19878 12.4645 6.10786 12.5 6.00984 12.5C5.89691 12.5 5.80528 12.4645 5.73496 12.3943L0.105125 6.77302C0.0348053 6.70281 5.14742e-07 6.61204 5.24537e-07 6.5C5.33154e-07 6.40143 0.0348054 6.31066 0.105125 6.22627Z"
-              fill="#45668F" />
-          </svg>
-          <button class="add-button" matTooltip="Add name">
-            <i class="amds-icon amds-icon-plus-add"></i>
-          </button>
         </div>
       </div>
-      <div
-        style="display: flex; flex-wrap: wrap; align-items: center; width: 100%; font-weight: 400; font-size: 14px; line-height: 12px;">
-        <mat-radio-group aria-label="Select an option">
-          <mat-radio-button value="1"></mat-radio-button>
-        </mat-radio-group>
-        <mat-form-field appearance="standard" floatLabel="always">
-          <mat-label>Type</mat-label>
-          <mat-select>
-            <mat-option value="leagal">Legal</mat-option>
-            <mat-option value="previous">Previous Legal</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="standard" floatLabel="always">
-          <mat-label>First Name</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <mat-form-field appearance="standard" floatLabel="always">
-          <mat-label>Middle</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <mat-form-field appearance="standard" floatLabel="always">
-          <mat-label>Last</mat-label>
-          <input matInput>
-        </mat-form-field>
+      <div *ngIf="nameActive" style="flex: 1 auto;"></div>
+      <div *ngIf="nameActive" class="section-header-menu">
+        <div class="section-header-badge">
+          <span>1</span>
+        </div>
+        <span>OTHER</span>
+        <svg style="margin-left: 8px;" width="7" height="13" viewBox="0 0 7 13" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M0.105125 6.22627L5.73496 0.626226C5.80528 0.541839 5.89691 0.5 6.00984 0.5C6.10787 0.5 6.19878 0.54184 6.28331 0.626226L6.87357 1.21623C6.95809 1.29991 7 1.39777 7 1.51052C7 1.60838 6.95809 1.69986 6.87357 1.78425L2.15079 6.5L6.87357 11.2363C6.95809 11.3207 7 11.4115 7 11.51C7 11.6079 6.95809 11.6994 6.87357 11.7838L6.28331 12.3943C6.19878 12.4645 6.10786 12.5 6.00984 12.5C5.89691 12.5 5.80528 12.4645 5.73496 12.3943L0.105125 6.77302C0.0348053 6.70281 5.14742e-07 6.61204 5.24537e-07 6.5C5.33154e-07 6.40143 0.0348054 6.31066 0.105125 6.22627Z"
+            fill="#45668F" />
+        </svg>
+        <button class="add-button" matTooltip="Add name">
+          <i class="amds-icon amds-icon-plus-add"></i>
+        </button>
       </div>
+    </div>
+    <amds-patient-name *ngIf="nameActive"></amds-patient-name>
+    <div class="section-header" [ngClass]="identityActive ? 'active' : '' ">
+      <button class="section-expand" matTooltip="Expand Section" (click)="toggleIdentitySectionActive()">
+        <i class="amds-icon amds-icon-angle-down"></i>
+      </button>
+      <span class="amds-icon amds-icon-date-of-birth"
+        style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
+      <span *ngIf="identityActive" class="header-label"><u>D</u>OB & SSN</span>
+      <div *ngIf="!identityActive" class="section-detail">
+        <div class="section-detail-item">
+          <span class="header-label"><u>D</u>OB</span>
+          <span class="header-text">10/11/21</span>
+        </div>
+        <div class="section-detail-item">
+          <span class="header-label">AGE</span>
+          <span class="header-text">35Y</span>
+        </div>
+        <div class="section-detail-item">
+          <span class="header-label">SSN</span>
+          <span class="header-text">X-5303</span>
+        </div>
+      </div>
+    </div>
+    <amds-patient-identity *ngIf="identityActive"></amds-patient-identity>
+    <div class="section-header">
+      <button class="section-expand" matTooltip="Expand Section">
+        <i class="amds-icon amds-icon-angle-down"></i>
+      </button>
+      <span class="amds-icon amds-icon-key1" style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
+      <span>ACCO<u>U</u>NT</span>
+    </div>
 
-      <div class="section-header">
-        <span class="amds-icon amds-icon-angle-down"
-          style="margin-left: 8px; margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-        <span class="amds-icon amds-icon-date-of-birth"
-          style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-        <span><u>D</u>OB, AGE, SSN, ID...</span>
-      </div>
+    <div class="section-header">
+      <button class="section-expand" matTooltip="Expand Section">
+        <i class="amds-icon amds-icon-angle-down"></i>
+      </button>
+      <span class="amds-icon amds-icon-address-o" style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
+      <span><u>A</u>DDRESS</span>
+    </div>
 
-      <div class="section-header">
-        <span class="amds-icon amds-icon-angle-down"
-          style="margin-left: 8px; margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-        <span class="amds-icon amds-icon-key1" style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-        <span>ACCO<u>U</u>NT</span>
-      </div>
+    <div class="section-header">
+      <button class="section-expand" matTooltip="Expand Section">
+        <i class="amds-icon amds-icon-angle-down"></i>
+      </button>
+      <span class="amds-icon amds-icon-preferred-phone"
+        style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
+      <span><u>C</u>ONTACT</span>
+    </div>
 
-      <div class="section-header">
-        <span class="amds-icon amds-icon-angle-down"
-          style="margin-left: 8px; margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-        <span class="amds-icon amds-icon-address-o" style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-        <span><u>A</u>DDRESS</span>
-      </div>
+    <div class="section-header">
+      <button class="section-expand" matTooltip="Expand Section">
+        <i class="amds-icon amds-icon-angle-down"></i>
+      </button>
+      <span class="amds-icon amds-icon-sex" style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
+      <span><u>S</u>EX & GENDER</span>
+    </div>
 
-      <div class="section-header">
-        <span class="amds-icon amds-icon-angle-down"
-          style="margin-left: 8px; margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-        <span class="amds-icon amds-icon-preferred-phone"
-          style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-        <span><u>C</u>ONTACT</span>
-      </div>
+    <div class="section-header">
+      <button class="section-expand" matTooltip="Expand Section">
+        <i class="amds-icon amds-icon-angle-down"></i>
+      </button>
+      <span class="amds-icon amds-icon-race-alt" style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
+      <span><u>D</u>IVERSITY</span>
+    </div>
 
-      <div class="section-header">
-        <span class="amds-icon amds-icon-angle-down"
-          style="margin-left: 8px; margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-        <span class="amds-icon amds-icon-sex" style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-        <span>BIRTH <u>S</u>EX, SIGI...</span>
-      </div>
+    <div class="section-header">
+      <button class="section-expand" matTooltip="Expand Section">
+        <i class="amds-icon amds-icon-angle-down"></i>
+      </button>
+      <span class="amds-icon amds-icon-financial-class"
+        style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
+      <span><u>F</u>INANCIAL</span>
+    </div>
 
-      <div class="section-header">
-        <span class="amds-icon amds-icon-angle-down"
-          style="margin-left: 8px; margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-        <span class="amds-icon amds-icon-race-alt" style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-        <span>RAC<u>E</u>, ETHNICITY, LANGUAGE</span>
-      </div>
-
-      <div class="section-header">
-        <span class="amds-icon amds-icon-angle-down"
-          style="margin-left: 8px; margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-        <span class="amds-icon amds-icon-financial-class"
-          style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-        <span><u>F</u>INANCIAL CLASS, EMPLOYER...</span>
-      </div>
-
-      <div style="text-align: right; margin-top: 16px;">
-        <button mat-stroked-button color="primary" (click)="onSavePatient()">Save</button>
-      </div>
+    <div style="text-align: right; margin-top: 16px;">
+      <button mat-stroked-button color="primary" (click)="onSavePatient()">Save</button>
     </div>
   </amds-card-content>
 </amds-card>

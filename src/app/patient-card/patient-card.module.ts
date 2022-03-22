@@ -10,6 +10,8 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { AmdsCardModule } from '../card';
 import { PatientCardComponent } from './patient-card.component';
+import { PatientNameComponent } from './components/patient-name/patient-name.component';
+import { PatientIdentityComponent } from './components/patient-identity/patient-identity.component';
 
 @NgModule({
   imports: [
@@ -28,7 +30,9 @@ import { PatientCardComponent } from './patient-card.component';
     PatientCardComponent
   ],
   declarations: [
-    PatientCardComponent
+    PatientCardComponent,
+    PatientNameComponent,
+    PatientIdentityComponent
   ],
 })
 export class AmdsPatientCardModule { }

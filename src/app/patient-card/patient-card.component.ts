@@ -12,7 +12,11 @@ export class PatientCardComponent {
   @Input() isEmptyState = false;
   @Input() isLoading = false;
   @Input() rows: number;
+  @Input() columns: number;
   @Input() isReadOnly = false;
+
+  nameActive = false;
+  identityActive = false;
 
   onSavePatient(): void {
     this.isLoading = true;
@@ -22,7 +26,15 @@ export class PatientCardComponent {
     }, this.getRandomTimeoutValue());
   }
 
-  getRandomTimeoutValue(): number {
+  toggleNameSectionActive() {
+    this.nameActive = !this.nameActive;
+  }
+
+  toggleIdentitySectionActive() {
+    this.identityActive = !this.identityActive;
+  }
+
+  private getRandomTimeoutValue(): number {
     const min: number = Math.ceil(1000);
     const max: number = Math.floor(6000);
     return Math.floor(Math.random() * (max - min) + min); // the maximum is exclusive and the minimum is inclusive

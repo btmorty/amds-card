@@ -9,7 +9,7 @@
   <gridster-item *ngFor="let item of items" [item]="item">
     <ng-container [ngSwitch]="item.id">
       <amds-patient-card *ngSwitchCase="'PAT'" [isInitialState]="isInitialState" [isInitializing]="isInitPatient"
-        [isEmptyState]="isEmptyPatient" [isLoading]="isPatientLoading" [rows]="item.rows"></amds-patient-card>
+        [isEmptyState]="isEmptyPatient" [isLoading]="isPatientLoading" [rows]="item.rows" [columns]="item.columns"></amds-patient-card>
 
       <amds-resp-party-card *ngSwitchCase="'RSP'" [isInitialState]="isInitialState" [isInitializing]="isInitRespParty"
         [rows]="item.rows"></amds-resp-party-card>
