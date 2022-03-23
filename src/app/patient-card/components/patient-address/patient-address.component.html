@@ -1,0 +1,68 @@
+<amds-card-section [isSectionActive]="false" sectionIcon="address-o">
+  <amds-section-title><u>A</u>DDRESS</amds-section-title>
+  <amds-section-detail>
+    <amds-section-detail-item>
+      <amds-section-detail-label><u>A</u>DDRESS</amds-section-detail-label>
+      <amds-section-detail-text>123 West Main Street, SunnyDale City Heights</amds-section-detail-text>
+    </amds-section-detail-item>
+  </amds-section-detail>
+  <!-- <div class="section-header-menu">
+    <div class="section-header-badge">
+      <span>1</span>
+    </div>
+    <span>OTHER</span>
+    <svg style="margin-left: 8px;" width="7" height="13" viewBox="0 0 7 13" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M0.105125 6.22627L5.73496 0.626226C5.80528 0.541839 5.89691 0.5 6.00984 0.5C6.10787 0.5 6.19878 0.54184 6.28331 0.626226L6.87357 1.21623C6.95809 1.29991 7 1.39777 7 1.51052C7 1.60838 6.95809 1.69986 6.87357 1.78425L2.15079 6.5L6.87357 11.2363C6.95809 11.3207 7 11.4115 7 11.51C7 11.6079 6.95809 11.6994 6.87357 11.7838L6.28331 12.3943C6.19878 12.4645 6.10786 12.5 6.00984 12.5C5.89691 12.5 5.80528 12.4645 5.73496 12.3943L0.105125 6.77302C0.0348053 6.70281 5.14742e-07 6.61204 5.24537e-07 6.5C5.33154e-07 6.40143 0.0348054 6.31066 0.105125 6.22627Z"
+        fill="#45668F" />
+    </svg>
+    <button class="add-button" matTooltip="Add name">
+      <i class="amds-icon amds-icon-plus-add"></i>
+    </button>
+  </div> -->
+  <amds-section-content>
+    <!-- address row -->
+    <div fxLayout="row" fxLayoutAlign="start end" class="bg-non-active">
+
+      <mat-form-field fxFlex="50%" class="no-margin-form-field" floatLabel="always">
+        <mat-label>Address</mat-label>
+        <input matInput type="text" autocomplete="off" formControlName="address2" maxlength="30" tabindex="10">
+      </mat-form-field>
+
+      <mat-form-field class="no-margin-form-field left-divider" floatLabel="always">
+        <mat-label>Apt./Ste #</mat-label>
+        <input matInput type="text" autocomplete="off" formControlName="address1" maxlength="30" tabindex="11">
+      </mat-form-field>
+
+      <!-- <div fxFlex="30%" [class.hidden]="!useCountryCode" class="inline-block">
+      <amds-lookup-control [isRequired]="patientAddressRequired && useCountryCode" [leftDivider]="true" [tabIndex]="12"
+        [isLoading]="false" inputLabel="Country" [hideAddEditButton]="true" [group]="patientForm"
+        controlName="countryLookup" [entities]="filteredCountries$ | async" displayProperty="countrycode">
+      </amds-lookup-control>
+    </div> -->
+    </div>
+
+    <!-- Address Second row -->
+    <div fxLayout="row" fxLayoutAlign="start end">
+
+      <!-- <div fxFlex="35%" class="inline-block">
+      <amds-lookup-control #zip [isRequired]="patientAddressRequired" [isLoading]="searchingZipCodes$ | async"
+        [tabIndex]="13" inputLabel="Zip Code" [hideAddEditButton]="true" [group]="patientForm"
+        controlName="zipcodeLookup" [entities]="zipCodes$ | async" displayProperty="zipCity"
+        (optionSelected)="onZipcodeOptionSelected()" (clear)="onZipLookupClear()">
+      </amds-lookup-control>
+    </div> -->
+
+      <mat-form-field fxFlex="35%" class="no-margin-form-field left-divider" floatLabel="always">
+        <mat-label>City</mat-label>
+        <input matInput type="text" autocomplete="off" formControlName="city" maxlength="30" tabindex="14">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="30%" class="no-margin-form-field left-divider" floatLabel="always">
+        <mat-label>State</mat-label>
+        <input matInput type="text" autocomplete="off" formControlName="state" maxlength="3" tabindex="15">
+      </mat-form-field>
+    </div>
+  </amds-section-content>
+</amds-card-section>

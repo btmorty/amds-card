@@ -15,28 +15,12 @@ export class PatientCardComponent {
   @Input() columns: number;
   @Input() isReadOnly = false;
 
-  nameActive = false;
-  identityActive = false;
-  accountActive = false;
-
   onSavePatient(): void {
     this.isLoading = true;
 
     setTimeout(() => {
       this.isLoading = false;
     }, this.getRandomTimeoutValue());
-  }
-
-  toggleNameSectionActive() {
-    this.nameActive = !this.nameActive;
-  }
-
-  toggleIdentitySectionActive() {
-    this.identityActive = !this.identityActive;
-  }
-
-  toggleAccountSectionActive() {
-    this.accountActive = !this.accountActive;
   }
 
   private getRandomTimeoutValue(): number {

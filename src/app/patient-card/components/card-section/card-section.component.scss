@@ -1,0 +1,109 @@
+.section-header {
+  font-size: 14px;
+  line-height: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px 0;
+  border-top: 1px solid transparent;
+  border-bottom: 3px solid #F3F3F3;
+
+  .section-header-icon {
+    margin-right: 8px;
+    color: #45668F;
+    font-size: 12px;
+  }
+  
+  .section-title {
+    font-weight: 600;
+  }
+
+  button.section-expand {
+    margin: 0 4px;
+    display: inline-flex;
+    visibility: hidden;
+    justify-content: center;
+    align-items: center;
+    color: #45668f;
+    font-size: 12px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  button.section-expand:hover:not(:disabled) {
+    background-color: #cad1dd;
+  }
+
+  &.active {
+    background-color: #f9f9f9;
+    border-top: 1px solid #F3F3F3;
+    border-bottom: none;
+  }
+
+  .section-detail {
+    display: inline-flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    font-weight: 400; 
+    font-size: 14px;
+    line-height: 12px;
+  
+    .section-detail-item {
+      text-align: center;
+      padding: 0 8px;
+      border-left: #45668F solid 1px;
+
+      .section-detail-label {
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      
+      .section-detail-text {
+        font-weight: 300;
+      }
+  
+      .section-detail-label + .section-detail-text {
+        margin-left: 4px;
+      }
+    }
+  
+    .section-detail-item + .section-detail-item {
+      border-left: #45668F solid 1px;
+    }
+  
+    .section-detail-item:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+}
+
+// amds-card-section + amds-card-section {
+//   .section-header {
+//     border-top: 3px solid #F3F3F3;
+//   }
+// }
+
+.section-header:hover {
+  background-color: #DEEAF2;
+
+  button.section-expand {
+    visibility: visible;
+  }
+}
+
+.section-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 12px;
+  border-bottom: 3px solid #F3F3F3;
+}
