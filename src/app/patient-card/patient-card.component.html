@@ -229,13 +229,24 @@
       </div>
     </div>
     <amds-patient-identity *ngIf="identityActive"></amds-patient-identity>
-    <div class="section-header">
-      <button class="section-expand" matTooltip="Expand Section">
+    <div class="section-header" [ngClass]="accountActive ? 'active' : '' ">
+      <button class="section-expand" matTooltip="Expand Section"  (click)="toggleAccountSectionActive()">
         <i class="amds-icon amds-icon-angle-down"></i>
       </button>
       <span class="amds-icon amds-icon-key1" style="margin-right: 8px; color: #45668F; font-size: 12px;"></span>
-      <span>ACCO<u>U</u>NT</span>
+      <span *ngIf="accountActive" class="header-label">ACCO<u>U</u>NT</span>
+      <div *ngIf="!accountActive" class="section-detail">
+        <div class="section-detail-item">
+          <span class="header-label">ACCO<u>U</u>NT</span>
+          <span class="header-text">11334</span>
+        </div>
+        <div class="section-detail-item">
+          <span class="header-label">BALANCE</span>
+          <span class="header-text" style="background-color: #FFC8C8;">$5,000</span>
+        </div>
+      </div>
     </div>
+    <amds-patient-account *ngIf="accountActive"></amds-patient-account>
 
     <div class="section-header">
       <button class="section-expand" matTooltip="Expand Section">

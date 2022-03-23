@@ -12,6 +12,7 @@ import { AmdsCardModule } from '../card';
 import { PatientCardComponent } from './patient-card.component';
 import { PatientNameComponent } from './components/patient-name/patient-name.component';
 import { PatientIdentityComponent } from './components/patient-identity/patient-identity.component';
+import { PatientAccountComponent } from './components/patient-account/patient-account.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { PatientIdentityComponent } from './components/patient-identity/patient-
   declarations: [
     PatientCardComponent,
     PatientNameComponent,
-    PatientIdentityComponent
+    PatientIdentityComponent,
+    PatientAccountComponent
   ],
 })
 export class AmdsPatientCardModule { }

@@ -17,6 +17,7 @@ export class PatientCardComponent {
 
   nameActive = false;
   identityActive = false;
+  accountActive = false;
 
   onSavePatient(): void {
     this.isLoading = true;
@@ -32,6 +33,10 @@ export class PatientCardComponent {
 
   toggleIdentitySectionActive() {
     this.identityActive = !this.identityActive;
+  }
+
+  toggleAccountSectionActive() {
+    this.accountActive = !this.accountActive;
   }
 
   private getRandomTimeoutValue(): number {
