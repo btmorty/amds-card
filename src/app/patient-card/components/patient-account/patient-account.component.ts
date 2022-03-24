@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'amds-patient-account',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patient-account.component.scss']
 })
 export class PatientAccountComponent implements OnInit {
+  @Input() isExpanded = false;
 
   constructor() { }
 

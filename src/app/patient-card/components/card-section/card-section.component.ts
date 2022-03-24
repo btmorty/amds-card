@@ -76,13 +76,13 @@ export class SectionDetailTextComponent {
   encapsulation: ViewEncapsulation.None,
 })
 export class CardSectionComponent {
-  @Input() isSectionActive = false;
+  @Input() isExpanded = false;
   @Input() sectionIcon = '';
 
   constructor() { }
 
   toggleSectionActive() {
-    this.isSectionActive = !this.isSectionActive;
+    this.isExpanded = !this.isExpanded;
   }
 
 }

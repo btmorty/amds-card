@@ -1,5 +1,5 @@
 <amds-card borderColor="#104784" cardIcon="patient-card" titleText="Patient"
-  subtitleText="She, Her, Hers | Chart # 9443 | ID# 12333" [isInitialSate]="isInitialState"
+  subtitleText="She, Her, Hers | Chart # 9443 | ID# 12333" [isInitialSate]="false"
   initialStateMessage="No patient selected" [isInitializing]="isInitializing" [isLoading]="isLoading" [rows]="rows">
   <amds-card-actions>
     <button amds-card-button [matMenuTriggerFor]="patientCardMenu" buttonIcon="ellipsis-horizontal"
@@ -28,14 +28,14 @@
       </div>
     </div>
 
-    <amds-patient-name></amds-patient-name>
-    <amds-patient-identity></amds-patient-identity>
-    <amds-patient-account></amds-patient-account>
-    <amds-patient-address></amds-patient-address>
-    <amds-patient-contact></amds-patient-contact>
-    <amds-patient-gender></amds-patient-gender>
-    <amds-patient-race></amds-patient-race>
-    <amds-patient-financial></amds-patient-financial>
+    <amds-patient-name [isExpanded]="isInitialState"></amds-patient-name>
+    <amds-patient-identity [isExpanded]="isInitialState"></amds-patient-identity>
+    <amds-patient-account [isExpanded]="isInitialState"></amds-patient-account>
+    <amds-patient-address [isExpanded]="isInitialState"></amds-patient-address>
+    <amds-patient-contact [isExpanded]="isInitialState"></amds-patient-contact>
+    <amds-patient-gender [isExpanded]="isInitialState"></amds-patient-gender>
+    <amds-patient-race [isExpanded]="isInitialState"></amds-patient-race>
+    <amds-patient-financial [isExpanded]="isInitialState"></amds-patient-financial>
 
     <div style="text-align: right; margin-top: 16px;">
       <button mat-stroked-button color="primary" (click)="onSavePatient()">Save</button>

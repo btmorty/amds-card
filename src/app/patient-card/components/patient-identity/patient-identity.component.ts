@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'amds-patient-identity',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patient-identity.component.scss']
 })
 export class PatientIdentityComponent implements OnInit {
+  @Input() isExpanded = false;
+
+  maxDate = new Date();
 
   constructor() { }
 

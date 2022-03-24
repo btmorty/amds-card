@@ -1,4 +1,4 @@
-<amds-card-section [isSectionActive]="false" sectionIcon="date-of-birth">
+<amds-card-section [isExpanded]="isExpanded" sectionIcon="date-of-birth">
   <amds-section-title><u>D</u>OB & SSN</amds-section-title>
   <amds-section-detail>
     <amds-section-detail-item>
@@ -17,15 +17,17 @@
   <amds-section-content>
       <mat-form-field appearance="standard" floatLabel="always">
         <mat-label>Date of Birth</mat-label>
-        <input matInput>
+        <input matInput [matDatepicker]="picker" [max]="maxDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field appearance="standard" floatLabel="always">
         <mat-label>Age</mat-label>
-        <input matInput>
+        <input matInput disabled value="35Y">
       </mat-form-field>
       <mat-form-field appearance="standard" floatLabel="always">
         <mat-label>SSN</mat-label>
-        <input matInput>
+        <input matInput type="text" autocomplete="off">
       </mat-form-field>
       <mat-form-field appearance="standard" floatLabel="always">
         <mat-label>Chart #</mat-label>
