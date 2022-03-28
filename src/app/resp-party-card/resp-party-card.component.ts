@@ -1,18 +1,22 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'amds-resp-party-card',
   templateUrl: './resp-party-card.component.html',
   styleUrls: ['./resp-party-card.component.scss']
 })
-export class RespPartyCardComponent implements OnInit {
+export class RespPartyCardComponent {
   @Input() isInitialState = true;
   @Input() isInitializing = false;
+  @Input() isSelected = false;
   @Input() rows: number;
+
+  @Output() cardSelected = new EventEmitter<boolean>();
 
   constructor() { }
 
-  ngOnInit(): void {
+  onCardSelected() {
+    this.cardSelected.emit(true);
   }
 
 }

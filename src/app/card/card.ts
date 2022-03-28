@@ -7,17 +7,19 @@ import {
   Directive,
   Input,
   HostBinding,
-} from "@angular/core";
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 /**
  * Action section of a card, needed as it's used as a selector in the API.
  * @docs-private
  */
- @Directive({
+@Directive({
   selector: `amds-card-actions, [amds-card-actions]`,
 })
 export class AmdsCardActionsDirective {
-  @HostBinding("class.amds-card-actions") cardActionsClass = true;
+  @HostBinding('class.amds-card-actions') cardActionsClass = true;
 }
 
 /**
@@ -25,10 +27,10 @@ export class AmdsCardActionsDirective {
  * @docs-private
  */
 @Directive({
-  selector: "amds-card-content, [amds-card-content]",
+  selector: 'amds-card-content, [amds-card-content]',
 })
 export class AmdsCardContentDirective {
-  @HostBinding("class.amds-card-content") cardContentClass = true;
+  @HostBinding('class.amds-card-content') cardContentClass = true;
 }
 
 /**
@@ -42,34 +44,34 @@ export class AmdsCardContentDirective {
  * - amds-card-actions
  */
 @Component({
-  selector: "amds-card",
-  exportAs: "amdsCard",
-  templateUrl: "card.html",
-  styleUrls: ["card.scss"],
+  selector: 'amds-card',
+  exportAs: 'amdsCard',
+  templateUrl: 'card.html',
+  styleUrls: ['card.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AmdsCardComponent {
-  @HostBinding("class.amds-card") cardClass = true;
+  @HostBinding('class.amds-card') cardClass = true;
   /**
-   * string value of the hex color code that controls the main card border color. 
+   * string value of the hex color code that controls the main card border color.
    */
-  @Input() borderColor = "";
+  @Input() borderColor = '';
 
   /**
    * string value of the name of the svg icon to use as the main card icon.
    */
-  @Input() cardIcon = "";
+  @Input() cardIcon = '';
 
   /**
    * string value of the card title.
    */
-  @Input() titleText = "";
+  @Input() titleText = '';
 
   /**
    * string value of the card sub-title.
    */
-  @Input() subTitleText = "";
+  @Input() subTitleText = '';
 
   /**
    * number value that should be synced with the number of gridster rows the card is filling.
@@ -77,7 +79,7 @@ export class AmdsCardComponent {
   @Input() rows = 2;
 
   /**
-   * boolean value to indicate the card has not fetched any data yet. 
+   * boolean value to indicate the card has not fetched any data yet.
    */
   @Input() isInitialSate = true;
 
@@ -97,11 +99,22 @@ export class AmdsCardComponent {
 
   /**
    * boolean value to indicate card is doing initial fecth of data.
-  */
+   */
   @Input() isInitializing = true;
 
   /**
    * boolean value to indicate card is performing a backend task.
    */
   @Input() isLoading = false;
+
+  /**
+   * boolean value to indicate card is selected in main viewport.
+   */
+  @Input() isSelected = false;
+
+  @Output() cardSelected = new EventEmitter<boolean>();
+
+  onCardSelected() {
+    this.cardSelected.emit(true);
+  }
 }

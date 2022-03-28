@@ -3,10 +3,10 @@
 <div class="amds-card-header">
   <span class="amds-icon amds-icon-dragndrop amds-card-drag-icon" matTooltip="Drag & drop"></span>
   <span class="amds-card-icon" [ngClass]="'amds-svg-' + cardIcon"></span>
-  <span class="amds-card-header-text">
+  <button class="amds-card-header-text" (click)="onCardSelected()">
     <span class="amds-card-title">{{titleText}}</span>
     <span class="amds-card-subtitle">{{subTitleText}}</span>
-  </span>
+  </button>
   <span style="flex-grow: 1;"></span>
   <ng-content select="amds-card-actions"></ng-content>
 </div>
@@ -25,7 +25,11 @@
   <span>{{emptyStateMessage}}</span>
 </div>
 
+<div *ngIf="isSelected" class="amds-card-empty-state-text">
+  <span>Card is active</span>
+</div>
+
 <!-- [autoHeightDisabled]="false" [autoWidthDisabled]="false" -->
-<ng-scrollbar *ngIf="!isInitializing && !isInitialSate && !isEmptyState" class="scroll-area">
+<ng-scrollbar *ngIf="!isInitializing && !isInitialSate && !isEmptyState && !isSelected" class="scroll-area">
   <ng-content></ng-content>
 </ng-scrollbar>

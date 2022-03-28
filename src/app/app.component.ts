@@ -17,12 +17,15 @@ export class AppComponent {
 
   isInitialState = true;
 
+  isPatientSelected = true;
   isInitPatient = false;
-  isEmptyPatient = false;
+  isEmptyPatient = true;
   isPatientLoading = false;
+  isPatientCardSelected = true;
 
   isInitRespParty = false;
   isEmptyRespParty = false;
+  isRespPartyCardSelected = false;
 
   isInitInsurance = false;
   isEmptyInsurance = false;
@@ -53,8 +56,9 @@ export class AppComponent {
       compactType: CompactType.CompactLeftAndUp,
       fixedColWidth: 360,
       fixedRowHeight: 30,
-      maxCols: 3,
+      maxCols: 1,
       margin: 16,
+      mobileBreakpoint: 0,
       draggable: {
         enabled: true,
         ignoreContent: true,
@@ -92,6 +96,8 @@ export class AppComponent {
 
     setTimeout(() => {
       this.isInitPatient = false;
+      this.isEmptyPatient = false;
+      this.isPatientSelected = true;
     }, this.getRandomTimeoutValue());
 
     setTimeout(() => {
@@ -122,6 +128,17 @@ export class AppComponent {
 
   deselectPatient(): void {
     this.isInitialState = true;
+    this.isPatientSelected = false;
+  }
+
+  patientCardSelected() {
+    this.isPatientCardSelected = true;
+    this.isRespPartyCardSelected = false
+  }
+
+  respPartyCardSelected() {
+    this.isRespPartyCardSelected = true;
+    this.isPatientCardSelected = false;
   }
 
   private getRandomTimeoutValue(): number {

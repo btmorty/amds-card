@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'amds-patient-card',
@@ -11,9 +11,12 @@ export class PatientCardComponent {
   @Input() isInitializing = false;
   @Input() isEmptyState = false;
   @Input() isLoading = false;
+  @Input() isSelected = false;
   @Input() rows: number;
   @Input() columns: number;
   @Input() isReadOnly = false;
+
+  @Output() cardSelected = new EventEmitter<boolean>();
 
   onSavePatient(): void {
     this.isLoading = true;
@@ -21,6 +24,10 @@ export class PatientCardComponent {
     setTimeout(() => {
       this.isLoading = false;
     }, this.getRandomTimeoutValue());
+  }
+
+  onCardSelected() {
+    this.cardSelected.emit(true);
   }
 
   private getRandomTimeoutValue(): number {

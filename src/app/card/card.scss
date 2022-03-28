@@ -64,13 +64,18 @@ gridster-item:hover {
   .gridster-item-resizable-handler.handle-se {
     right: 0;
     bottom: -1px;
-    width: 20px;
-    height: 20px;
-    border-top: none;
-    border-left: none;
-    border-bottom: 3px solid #4178be;
-    border-right: 3px solid #4178be;
+    width: 10px;
+    height: 10px;
+    border-top: 0;
+    border-left: 0;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #4178be !important;
+    border-right-width: 2px;
+    border-right-style: solid;
+    border-right-color: #4178be !important;
   }
+
   .gridster-item-resizable-handler.handle-s {
     border-bottom: 1px solid #aaa;
     bottom: -1px;
@@ -79,7 +84,7 @@ gridster-item:hover {
   .gridster-item-resizable-handler.handle-e {
     border-right: 1px solid #aaa;
     top: 45px;
-    bottom: 22px;
+    bottom: 11px;
   }
 }
 
@@ -178,6 +183,8 @@ gridster-item:hover {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    text-align: left;
+    width: 100%;
 
     .amds-card-title {
       font-size: 14px;
@@ -191,6 +198,12 @@ gridster-item:hover {
       font-style: normal;
       font-weight: 300;
     }
+  }
+
+  button.amds-card-header-text {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
   }
 }
 
