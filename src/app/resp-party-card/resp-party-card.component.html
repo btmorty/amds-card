@@ -1,6 +1,6 @@
 <amds-card borderColor="#915788" cardIcon="responsible-party-card" titleText="Resp Party"
   [isInitialSate]="isInitialState" initialStateMessage="No patient selected" [isInitializing]="isInitializing"
-  [rows]="rows" [isEmptyState]="true" [isSelected]="isSelected" emptyStateMessage="No data" (cardSelected)="onCardSelected()">
+  [rows]="rows" [isEmptyState]="true" [isActive]="isActive" emptyStateMessage="No data" (cardSelected)="onCardSelected()">
   <amds-card-actions>
     <button amds-card-button [matMenuTriggerFor]="respPartyCardMenu" buttonIcon="ellipsis-horizontal"
       matTooltip="More"></button>

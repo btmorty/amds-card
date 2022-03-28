@@ -21,11 +21,11 @@ export class AppComponent {
   isInitPatient = false;
   isEmptyPatient = true;
   isPatientLoading = false;
-  isPatientCardSelected = true;
+  isPatientCardActive= true;
 
   isInitRespParty = false;
   isEmptyRespParty = false;
-  isRespPartyCardSelected = false;
+  isRespPartyCardActive = false;
 
   isInitInsurance = false;
   isEmptyInsurance = false;
@@ -132,13 +132,13 @@ export class AppComponent {
   }
 
   patientCardSelected() {
-    this.isPatientCardSelected = true;
-    this.isRespPartyCardSelected = false
+    this.isPatientCardActive = true;
+    this.isRespPartyCardActive = false
   }
 
   respPartyCardSelected() {
-    this.isRespPartyCardSelected = true;
-    this.isPatientCardSelected = false;
+    this.isRespPartyCardActive = true;
+    this.isPatientCardActive = false;
   }
 
   private getRandomTimeoutValue(): number {

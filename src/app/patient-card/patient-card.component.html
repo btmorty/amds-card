@@ -1,6 +1,6 @@
 <amds-card borderColor="#104784" cardIcon="patient-card" titleText="Patient"
   subtitleText="She, Her, Hers | Chart # 9443 | ID# 12333" [isInitialSate]="isInitialState"
-  initialStateMessage="No patient selected" [isInitializing]="isInitializing" [isLoading]="isLoading" [isSelected]="isSelected" [rows]="rows" (cardSelected)="onCardSelected()">
+  initialStateMessage="No patient selected" [isInitializing]="isInitializing" [isLoading]="isLoading" [isActive]="isActive" [rows]="rows" (cardSelected)="onCardSelected()">
   <amds-card-actions>
     <button amds-card-button [matMenuTriggerFor]="patientCardMenu" buttonIcon="ellipsis-horizontal"
       matTooltip="More"></button>

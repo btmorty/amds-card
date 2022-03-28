@@ -17,19 +17,19 @@
   <span *ngFor="let _ of [].constructor((rows - 1)); even as even; odd as odd" class="skeleton-box" [ngClass]="{ 'skeleton-box-100': even, 'skeleton-box-85': odd }"></span>
 </div>
 
-<div *ngIf="!isInitializing && isInitialSate && initialStateMessage" class="amds-card-empty-state-text">
+<div *ngIf="!isInitializing && !isActive && isInitialSate && initialStateMessage" class="amds-card-empty-state-text">
   <span>{{initialStateMessage}}</span>
 </div>
 
-<div *ngIf="!isInitializing && !isInitialSate && isEmptyState && emptyStateMessage" class="amds-card-empty-state-text">
+<div *ngIf="!isInitializing && !isInitialSate && !isActive && isEmptyState && emptyStateMessage" class="amds-card-empty-state-text">
   <span>{{emptyStateMessage}}</span>
 </div>
 
-<div *ngIf="isSelected" class="amds-card-empty-state-text">
+<div *ngIf="!isInitializing && isActive" class="amds-card-empty-state-text">
   <span>Card is active</span>
 </div>
 
 <!-- [autoHeightDisabled]="false" [autoWidthDisabled]="false" -->
-<ng-scrollbar *ngIf="!isInitializing && !isInitialSate && !isEmptyState && !isSelected" class="scroll-area">
+<ng-scrollbar *ngIf="!isInitializing && !isInitialSate && !isEmptyState && !isActive" class="scroll-area">
   <ng-content></ng-content>
 </ng-scrollbar>

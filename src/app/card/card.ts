@@ -108,10 +108,13 @@ export class AmdsCardComponent {
   @Input() isLoading = false;
 
   /**
-   * boolean value to indicate card is selected in main viewport.
+   * boolean value to indicate card is active in main viewport.
    */
-  @Input() isSelected = false;
+  @Input() isActive = false;
 
+  /**
+   * card selection event
+   */
   @Output() cardSelected = new EventEmitter<boolean>();
 
   onCardSelected() {

@@ -11,7 +11,7 @@ export class PatientCardComponent {
   @Input() isInitializing = false;
   @Input() isEmptyState = false;
   @Input() isLoading = false;
-  @Input() isSelected = false;
+  @Input() isActive = false;
   @Input() rows: number;
   @Input() columns: number;
   @Input() isReadOnly = false;

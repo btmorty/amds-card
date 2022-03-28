@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class RespPartyCardComponent {
   @Input() isInitialState = true;
   @Input() isInitializing = false;
-  @Input() isSelected = false;
+  @Input() isActive = false;
   @Input() rows: number;
 
   @Output() cardSelected = new EventEmitter<boolean>();
