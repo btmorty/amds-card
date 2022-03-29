@@ -28,6 +28,7 @@ import { PatientGenderComponent } from './components/patient-gender/patient-gend
 import { PatientRaceComponent } from './components/patient-race/patient-race.component';
 import { PatientFinancialComponent } from './components/patient-financial/patient-financial.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatFormFieldModule,
     MatSelectModule,
     MatRadioModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatSnackBarModule
   ],
   exports: [PatientCardComponent],
   declarations: [

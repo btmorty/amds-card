@@ -13,6 +13,10 @@
   </amds-card-actions>
   <amds-card-content>
     <div class="patient-header">
+      <button class="amds-card-button" style="margin-right: 8px;">
+        <span class="amds-icon amds-icon-angle-down" style="color:#45668f;"></span>
+        <span class="amds-icon amds-icon-angle-down" style="color:#45668f; transform: rotate(-180deg);"></span>
+      </button>
       <div class="patient-header-item">
         <div class="patient-status-active"></div>
         <span>Active</span>
@@ -38,7 +42,8 @@
     <amds-patient-financial [isExpanded]="isInitialState || isEmptyState"></amds-patient-financial>
 
     <div style="text-align: right; margin-top: 16px;">
-      <button mat-stroked-button color="primary" (click)="onSavePatient()">Save</button>
+      <button mat-stroked-button color="accent" style="margin-right: 16px;" (click)="onSavePatient()">Cancel</button>
+      <button mat-raised-button color="primary" (click)="onSavePatient()">Save</button>
     </div>
   </amds-card-content>
 </amds-card>

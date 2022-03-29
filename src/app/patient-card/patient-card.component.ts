@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'amds-patient-card',
@@ -18,11 +19,16 @@ export class PatientCardComponent {
 
   @Output() cardSelected = new EventEmitter<boolean>();
 
+  constructor(private snackbar: MatSnackBar) { }
+
   onSavePatient(): void {
     this.isLoading = true;
 
     setTimeout(() => {
       this.isLoading = false;
+      this.snackbar.open('Success', undefined, {
+        duration: 3000
+      })
     }, this.getRandomTimeoutValue());
   }
 
