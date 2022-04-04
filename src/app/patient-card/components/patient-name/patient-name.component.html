@@ -6,46 +6,57 @@
       <amds-section-detail-text>Paula Smith</amds-section-detail-text>
     </amds-section-detail-item>
     <amds-section-detail-item>
-      <amds-section-detail-text>Pat Milly Smith</amds-section-detail-text>
+      <amds-section-detail-text class="preferred-name-background-color">Pat Milly Smith</amds-section-detail-text>
     </amds-section-detail-item>
   </amds-section-detail>
-  <!-- <div class="section-header-menu">
-    <div class="section-header-badge">
-      <span>1</span>
+  <amds-section-actions>
+    <div class="section-header-menu">
+      <div class="section-header-badge">
+        <span>{{names.controls.length}}</span>
+      </div>
+      <span>OTHER</span>
+      <svg style="margin-left: 8px;" width="7" height="13" viewBox="0 0 7 13" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M0.105125 6.22627L5.73496 0.626226C5.80528 0.541839 5.89691 0.5 6.00984 0.5C6.10787 0.5 6.19878 0.54184 6.28331 0.626226L6.87357 1.21623C6.95809 1.29991 7 1.39777 7 1.51052C7 1.60838 6.95809 1.69986 6.87357 1.78425L2.15079 6.5L6.87357 11.2363C6.95809 11.3207 7 11.4115 7 11.51C7 11.6079 6.95809 11.6994 6.87357 11.7838L6.28331 12.3943C6.19878 12.4645 6.10786 12.5 6.00984 12.5C5.89691 12.5 5.80528 12.4645 5.73496 12.3943L0.105125 6.77302C0.0348053 6.70281 5.14742e-07 6.61204 5.24537e-07 6.5C5.33154e-07 6.40143 0.0348054 6.31066 0.105125 6.22627Z"
+          fill="#45668F" />
+      </svg>
+      <button class="add-button" matTooltip="Add name" (click)="addName()">
+        <i class="amds-icon amds-icon-plus-add"></i>
+      </button>
     </div>
-    <span>OTHER</span>
-    <svg style="margin-left: 8px;" width="7" height="13" viewBox="0 0 7 13" fill="none"
-      xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd"
-        d="M0.105125 6.22627L5.73496 0.626226C5.80528 0.541839 5.89691 0.5 6.00984 0.5C6.10787 0.5 6.19878 0.54184 6.28331 0.626226L6.87357 1.21623C6.95809 1.29991 7 1.39777 7 1.51052C7 1.60838 6.95809 1.69986 6.87357 1.78425L2.15079 6.5L6.87357 11.2363C6.95809 11.3207 7 11.4115 7 11.51C7 11.6079 6.95809 11.6994 6.87357 11.7838L6.28331 12.3943C6.19878 12.4645 6.10786 12.5 6.00984 12.5C5.89691 12.5 5.80528 12.4645 5.73496 12.3943L0.105125 6.77302C0.0348053 6.70281 5.14742e-07 6.61204 5.24537e-07 6.5C5.33154e-07 6.40143 0.0348054 6.31066 0.105125 6.22627Z"
-        fill="#45668F" />
-    </svg>
-    <button class="add-button" matTooltip="Add name">
-      <i class="amds-icon amds-icon-plus-add"></i>
-    </button>
-  </div> -->
+  </amds-section-actions>
   <amds-section-content>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="1"></mat-radio-button>
-      </mat-radio-group>
-      <mat-form-field appearance="standard" floatLabel="always">
-        <mat-label>Type</mat-label>
-        <mat-select>
-          <mat-option value="leagal">Legal</mat-option>
-          <mat-option value="previous">Previous Legal</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="standard" floatLabel="always">
-        <mat-label>First Name</mat-label>
-        <input matInput autocomplete="off">
-      </mat-form-field>
-      <mat-form-field appearance="standard" floatLabel="always">
-        <mat-label>Middle</mat-label>
-        <input matInput autocomplete="off">
-      </mat-form-field>
-      <mat-form-field appearance="standard" floatLabel="always">
-        <mat-label>Last</mat-label>
-        <input matInput autocomplete="off">
-      </mat-form-field>
+    <form [formGroup]="namesFormGroup">
+      <ng-container formArrayName="names">
+        <ng-container *ngFor="let name of names.controls; let i=index">
+          <div [formGroupName]="i"
+            [ngClass]="!!name.get('isPreferred')?.value ? 'preferred-name-background-color' : ''">
+            <mat-checkbox formControlName="isPreferred" style="margin-right: 8px;"></mat-checkbox>
+            <mat-form-field appearance="standard" floatLabel="always">
+              <mat-label>Type</mat-label>
+              <mat-select formControlName="type">
+                <mat-option *ngIf="i === 0" value="legal">Legal</mat-option>
+                <mat-option *ngIf="i === 1" value="previous">Previous Legal</mat-option>
+                <mat-option value="alternate">Alternate</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="standard" floatLabel="always" required>
+              <mat-label>First Name {{!!name.get('isPreferred')?.value ? '(PREFERRED)' : ''}}</mat-label>
+              <input matInput autocomplete="off" formControlName="firstName">
+            </mat-form-field>
+            <mat-form-field appearance="standard" floatLabel="always">
+              <mat-label>Middle</mat-label>
+              <input matInput autocomplete="off" formControlName="middleName">
+            </mat-form-field>
+            <mat-form-field appearance="standard" floatLabel="always" required>
+              <mat-label>Last</mat-label>
+              <input matInput autocomplete="off" formControlName="lastName">
+            </mat-form-field>
+            <button amds-card-button style="color: red;" buttonIcon="delete" (click)="removeName(i)" matTooltip="Remove Name"></button>
+          </div>
+        </ng-container>
+      </ng-container>
+    </form>
   </amds-section-content>
 </amds-card-section>

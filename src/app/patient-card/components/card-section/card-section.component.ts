@@ -69,6 +69,18 @@ export class SectionDetailTextComponent {
   @HostBinding("class.section-detail-text") sectionDetailTextClass = true;
 }
 
+/**
+ * Action section of a card, needed as it's used as a selector in the API.
+ * @docs-private
+ */
+ @Component({
+  selector: `amds-section-actions`,
+  template: `<ng-content></ng-content>`
+})
+export class SectionActionsComponent {
+  @HostBinding("class.section-actions") sectionActionsClass = true;
+}
+
 @Component({
   selector: 'amds-card-section',
   templateUrl: './card-section.component.html',

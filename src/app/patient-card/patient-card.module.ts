@@ -21,6 +21,7 @@ import {
   SectionDetailLabelComponent,
   SectionDetailTextComponent,
   SectionContentDirective,
+  SectionActionsComponent,
 } from './components/card-section/card-section.component';
 import { PatientAddressComponent } from './components/patient-address/patient-address.component';
 import { PatientContactComponent } from './components/patient-contact/patient-contact.component';
@@ -29,11 +30,15 @@ import { PatientRaceComponent } from './components/patient-race/patient-race.com
 import { PatientFinancialComponent } from './components/patient-financial/patient-financial.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
     CommonModule,
     AmdsCardModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
@@ -41,7 +46,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatRadioModule,
+    MatCheckboxModule,
     MatDatepickerModule,
     MatSnackBarModule
   ],
@@ -58,6 +63,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     SectionDetailItemComponent,
     SectionDetailLabelComponent,
     SectionDetailTextComponent,
+    SectionActionsComponent,
     PatientAddressComponent,
     PatientContactComponent,
     PatientGenderComponent,

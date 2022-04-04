@@ -1,5 +1,6 @@
 <div class="section-header" [ngClass]="isExpanded ? 'active' : '' ">
-  <button class="section-expand" [ngStyle]="{'transform' : !isExpanded ? 'rotate(-90deg)' : '' }" [matTooltip]="!isExpanded ? 'Expand Section' : 'Collapse Section'" (click)="toggleSectionActive()">
+  <button class="section-expand" [ngStyle]="{'transform' : !isExpanded ? 'rotate(-90deg)' : '' }"
+    [matTooltip]="!isExpanded ? 'Expand Section' : 'Collapse Section'" (click)="toggleSectionActive()">
     <i class="amds-icon amds-icon-angle-down"></i>
   </button>
   <span class="section-header-icon amds-icon" [ngClass]="'amds-icon-' + sectionIcon"></span>
@@ -10,7 +11,7 @@
   <ng-template #sectionDetail>
     <ng-content select="amds-section-detail"></ng-content>
   </ng-template>
-    <div *ngIf="isExpanded" style="flex: 1 auto;"></div>
-    <!-- <ng-content select="amds-section-actions"></ng-content> -->
+  <div *ngIf="isExpanded" style="flex: 1 auto;"></div>
+  <ng-content *ngIf="isExpanded" select="amds-section-actions"></ng-content>
 </div>
 <ng-content select="amds-section-content" *ngIf="isExpanded"></ng-content>
