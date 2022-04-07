@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IPatientName } from '../../models/patient.model';
+import { IPatientName, PatientName, PatientNameTypes } from '../../models/patient.model';
 
 @Component({
   selector: 'amds-patient-name',
@@ -9,23 +9,7 @@ import { IPatientName } from '../../models/patient.model';
 })
 export class PatientNameComponent implements OnInit {
   @Input() isExpanded = false;
-
-  mockPatientName: IPatientName[] = [
-    {
-      firstName: 'Paula',
-      middleName: '',
-      lastName: 'Smith',
-      type: 'legal',
-      isPreferred: false,
-    },
-    {
-      firstName: 'Pat',
-      middleName: '',
-      lastName: 'Smith',
-      type: 'previous',
-      isPreferred: true,
-    },
-  ];
+  @Input() patientNames: IPatientName[] | undefined;
 
   nameFormGroup = this.fb.group({
     isPreferred: [false],
@@ -43,24 +27,50 @@ export class PatientNameComponent implements OnInit {
     return this.namesFormGroup.get('names') as FormArray;
   }
 
+  get preferredName(): string {
+    const names = this.names.value as IPatientName[];
+    let name = names.find((f) => f.isPreferred);
+
+    if (!name) {
+      name = names.find((f) => f.type === PatientNameTypes.Legal);
+    }
+
+    if (name) {
+      const preferredName = new PatientName(
+        name.first,
+        name.middle,
+        name.last,
+        name.type,
+        name.isPreferred
+      );
+      return preferredName.full;
+    } else {
+      return '';
+    }
+  }
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.mockPatientName.forEach(name => {
-      this.insertName(name);
-    })
+    if (this.patientNames) {
+      this.patientNames.forEach((name) => {
+        this.insertName(name);
+      });
+    } else {
+      this.addName();
+    }
   }
 
   insertName(name: IPatientName) {
     const insertName = this.fb.group({
       isPreferred: [name.isPreferred],
       type: [name.type, Validators.required],
-      firstName: [name.firstName, Validators.required],
-      middleName: [name.middleName],
-      lastName: [name.lastName, Validators.required],
+      firstName: [name.first, Validators.required],
+      middleName: [name.middle],
+      lastName: [name.last, Validators.required],
     });
 
-    this.names.push(insertName)
+    this.names.push(insertName);
   }
 
   addName() {
@@ -69,5 +79,19 @@ export class PatientNameComponent implements OnInit {
 
   removeName(index: number) {
     this.names.removeAt(index);
+  }
+
+  setPreferredName(index: number) {
+    this.names.at(index).get('isPreferred')?.setValue(true);
+  }
+
+  //TODO: On Form change events make sure only 1 name is selected as perferred.
+
+  getfullName(name: IPatientName): string {
+    if (typeof name.middle != 'undefined' && name.middle) {
+      return `${name.first} ${name.middle} ${name.last}`;
+    } else {
+      return `${name.first} ${name.last}`;
+    }
   }
 }

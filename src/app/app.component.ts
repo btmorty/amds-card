@@ -5,6 +5,7 @@ import {
   GridsterItem,
   GridType,
 } from 'angular-gridster2';
+import { IPatient, PatientName } from './patient-card/models/patient.model';
 
 @Component({
   selector: 'amds-root',
@@ -38,6 +39,50 @@ export class AppComponent {
 
   isInitMarketing = false;
   isEmptyMarketing = false;
+
+  patient: IPatient | undefined = undefined;
+
+  mockPatient: IPatient = {
+    id: 1111,
+    chartnumber: '1111',
+    names: [
+      new PatientName('Paula', '', 'Smith', 'legal', false),
+      new PatientName('Pat', '', 'Smith', 'previous', true, 1)
+    ],
+    ssn: '111-11-1111',
+    dob: '10-11-2000', // using string to avoid time-zone shift when sending to the API
+    gender: 'Female',
+    genderidentityid: 1,
+    genderidentityotherid: undefined,
+    sexualorientationid: 1,
+    sexualorientationotherid: undefined,
+    pronounes: 'She, Her, Hers',
+    address1: '123 West Main Street',
+    address2: '',
+    city: 'Sunnydale City Heights',
+    state: 'CA',
+    zipcode: '91929-0000',
+    countrycode: 'USA',
+    otherphone: '801-223-3245',
+    othertype: 'CELL',
+    officeextension: '',
+    email: 'junepatacupos@nelnet.com',
+    confidentialcommunicationid: 1,
+    profileid: 1,
+    employer: 'AdvancedMD a Global Payments Company',
+    employerid: 1,
+    responsiblepartyid: 22222,
+    newresponsibleparty: {
+      firstname: 'Paula',
+      middlename: '',
+      lastname: 'Smith'
+    },
+    relationship: 18,
+    hipaarelationship: 'SELF',
+    financialclassid: 1,
+    referringproviderid: 1,
+    communicationnote: ''
+  };
 
   get isAppInit() {
     return (
@@ -86,6 +131,8 @@ export class AppComponent {
 
   // simulate initial load
   selectPatient(): void {
+    this.patient = this.mockPatient;
+
     this.isInitialState = false;
     this.isInitPatient = true;
     this.isInitRespParty = true;
@@ -127,6 +174,7 @@ export class AppComponent {
   }
 
   deselectPatient(): void {
+    this.patient = undefined;
     this.isInitialState = true;
     this.isPatientSelected = false;
   }

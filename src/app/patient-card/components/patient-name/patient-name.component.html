@@ -3,10 +3,7 @@
   <amds-section-detail>
     <amds-section-detail-item>
       <amds-section-detail-label><u>N</u>AME</amds-section-detail-label>
-      <amds-section-detail-text>Paula Smith</amds-section-detail-text>
-    </amds-section-detail-item>
-    <amds-section-detail-item>
-      <amds-section-detail-text class="preferred-name-background-color">Pat Milly Smith</amds-section-detail-text>
+      <amds-section-detail-text>{{preferredName}}</amds-section-detail-text>
     </amds-section-detail-item>
   </amds-section-detail>
   <amds-section-actions>
@@ -21,8 +18,8 @@
           d="M0.105125 6.22627L5.73496 0.626226C5.80528 0.541839 5.89691 0.5 6.00984 0.5C6.10787 0.5 6.19878 0.54184 6.28331 0.626226L6.87357 1.21623C6.95809 1.29991 7 1.39777 7 1.51052C7 1.60838 6.95809 1.69986 6.87357 1.78425L2.15079 6.5L6.87357 11.2363C6.95809 11.3207 7 11.4115 7 11.51C7 11.6079 6.95809 11.6994 6.87357 11.7838L6.28331 12.3943C6.19878 12.4645 6.10786 12.5 6.00984 12.5C5.89691 12.5 5.80528 12.4645 5.73496 12.3943L0.105125 6.77302C0.0348053 6.70281 5.14742e-07 6.61204 5.24537e-07 6.5C5.33154e-07 6.40143 0.0348054 6.31066 0.105125 6.22627Z"
           fill="#45668F" />
       </svg>
-      <button class="add-button" matTooltip="Add name" (click)="addName()">
-        <i class="amds-icon amds-icon-plus-add"></i>
+      <button mat-icon-button class="add-button" (click)="addName()" [disabled]="!names.at(0).valid">
+        <i [matTooltip]="names.at(0).valid ? 'Add name' : 'Must have valid legal name'" class="amds-icon amds-icon-plus-add"></i>
       </button>
     </div>
   </amds-section-actions>
@@ -34,7 +31,7 @@
             [ngClass]="!!name.get('isPreferred')?.value ? 'preferred-name-background-color' : ''">
             <mat-checkbox formControlName="isPreferred" style="margin-right: 8px;"></mat-checkbox>
             <mat-form-field appearance="standard" floatLabel="always">
-              <mat-label>Type</mat-label>
+              <mat-label>Type {{!!name.get('isPreferred')?.value ? '(PREFERRED)' : ''}}</mat-label>
               <mat-select formControlName="type">
                 <mat-option *ngIf="i === 0" value="legal">Legal</mat-option>
                 <mat-option *ngIf="i === 1" value="previous">Previous Legal</mat-option>
@@ -42,7 +39,7 @@
               </mat-select>
             </mat-form-field>
             <mat-form-field appearance="standard" floatLabel="always" required>
-              <mat-label>First Name {{!!name.get('isPreferred')?.value ? '(PREFERRED)' : ''}}</mat-label>
+              <mat-label>First Name</mat-label>
               <input matInput autocomplete="off" formControlName="firstName">
             </mat-form-field>
             <mat-form-field appearance="standard" floatLabel="always">
@@ -52,8 +49,17 @@
             <mat-form-field appearance="standard" floatLabel="always" required>
               <mat-label>Last</mat-label>
               <input matInput autocomplete="off" formControlName="lastName">
-            </mat-form-field>
-            <button amds-card-button style="color: red;" buttonIcon="delete" (click)="removeName(i)" matTooltip="Remove Name"></button>
+            </mat-form-field>            
+            <button amds-card-button [matMenuTriggerFor]="patientNameMenu" buttonIcon="ellipsis-horizontal"
+            matTooltip="More"></button>
+          <mat-menu #patientNameMenu="matMenu" xPosition="before">
+            <button mat-menu-item (click)="removeName(i)">
+              <span style="color: red;">Delete Name</span>
+            </button>
+            <button mat-menu-item (click)="setPreferredName(i)">
+              <span>Set as Preferred Name</span>
+            </button>
+          </mat-menu>
           </div>
         </ng-container>
       </ng-container>

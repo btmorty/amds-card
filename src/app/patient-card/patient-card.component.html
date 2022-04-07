@@ -6,7 +6,15 @@
       matTooltip="More"></button>
     <mat-menu #patientCardMenu="matMenu" xPosition="before">
       <button mat-menu-item>
-        <mat-icon>visibility_off</mat-icon>
+        <span>Delete Patient</span>
+      </button>
+      <button mat-menu-item>
+        <span>Quick Add Mode</span>
+      </button>
+      <button mat-menu-item>
+        <span>Audit Log</span>
+      </button>
+      <button mat-menu-item>
         <span>Hide Card</span>
       </button>
     </mat-menu>
@@ -32,7 +40,7 @@
       </div>
     </div>
 
-    <amds-patient-name [isExpanded]="isInitialState || isEmptyState"></amds-patient-name>
+    <amds-patient-name [isExpanded]="isInitialState || isEmptyState" [patientNames]="patient?.names"></amds-patient-name>
     <amds-patient-identity [isExpanded]="isInitialState || isEmptyState"></amds-patient-identity>
     <amds-patient-account [isExpanded]="isInitialState || isEmptyState"></amds-patient-account>
     <amds-patient-address [isExpanded]="isInitialState || isEmptyState"></amds-patient-address>

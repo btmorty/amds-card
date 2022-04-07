@@ -24,7 +24,6 @@
   }
 
   button.add-button {
-    color: #45668f;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -37,8 +36,17 @@
     line-height: 16px;
     border: none;
     border-radius: 50%;
+  }
+
+  button.add-button:not(:disabled) {
+    color: #45668f;
     background-color: transparent;
-    cursor: pointer;
+  }
+
+  button.add-button:disabled {
+    background-color: -internal-light-dark(rgba(239, 239, 239, 0.3), rgba(19, 1, 1, 0.3));
+    color: -internal-light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+    border-color: -internal-light-dark(rgba(118, 118, 118, 0.3), rgba(195, 195, 195, 0.3));
   }
 
   button.add-button:hover:not(:disabled) {
