@@ -1,29 +1,31 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IPatientName, PatientName, PatientNameTypes } from '../../models/patient.model';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import {
+  IPatientName,
+  PatientName,
+  PatientNameTypes,
+} from '../../models/patient.model';
 
 @Component({
   selector: 'amds-patient-name',
   templateUrl: './patient-name.component.html',
   styleUrls: ['./patient-name.component.scss'],
 })
-export class PatientNameComponent implements OnInit {
+export class PatientNameComponent implements OnChanges {
   @Input() isExpanded = false;
   @Input() patientNames: IPatientName[] | undefined;
 
-  nameFormGroup = this.fb.group({
-    isPreferred: [false],
-    type: ['', Validators.required],
-    firstName: ['', Validators.required],
-    middleName: [''],
-    lastName: ['', Validators.required],
-  });
+  namesFormGroup: FormGroup;
 
-  namesFormGroup = this.fb.group({
-    names: this.fb.array([]),
-  });
-
-  get names() {
+  get names(): FormArray {
     return this.namesFormGroup.get('names') as FormArray;
   }
 
@@ -49,9 +51,23 @@ export class PatientNameComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+    this.namesFormGroup = this.fb.group({
+      names: this.fb.array([]),
+    });
+  }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['patientNames']) {
+      const patientNameChanges = changes['patientNames'];
+      if (patientNameChanges.previousValue !== patientNameChanges.currentValue) {
+        this.clearForm();
+        this.initPatientNameForm();
+      }
+    }
+  }
+
+  initPatientNameForm(): void {
     if (this.patientNames) {
       this.patientNames.forEach((name) => {
         this.insertName(name);
@@ -61,7 +77,7 @@ export class PatientNameComponent implements OnInit {
     }
   }
 
-  insertName(name: IPatientName) {
+  insertName(name: IPatientName): void {
     const insertName = this.fb.group({
       isPreferred: [name.isPreferred],
       type: [name.type, Validators.required],
@@ -73,16 +89,44 @@ export class PatientNameComponent implements OnInit {
     this.names.push(insertName);
   }
 
-  addName() {
-    this.names.push(this.nameFormGroup);
+  addName(): void {
+    const newName = this.fb.group({
+      isPreferred: [false],
+      type: ['', Validators.required],
+      firstName: ['', Validators.required],
+      middleName: [''],
+      lastName: ['', Validators.required],
+    });
+
+    this.names.push(newName);
   }
 
-  removeName(index: number) {
+  removeName(index: number): void {
     this.names.removeAt(index);
   }
 
-  setPreferredName(index: number) {
-    this.names.at(index).get('isPreferred')?.setValue(true);
+  clearForm(): void {
+    this.names.clear();
+  }
+
+  checkboxPreferredNameChange(index: number, event: MatCheckboxChange): void {
+    const isPreferredName = event.checked;
+
+    for (let i = 0; i < this.names.length; i++) {
+      this.names.at(i).get('isPreferred')?.setValue(false);
+    }
+
+    this.names.at(index).get('isPreferred')?.setValue(isPreferredName);
+  }
+
+  menuTogglePreferredName(index: number): void {
+    const currentValue = !!this.names.at(index).get('isPreferred')?.value;
+
+    for (let i = 0; i < this.names.length; i++) {
+      this.names.at(i).get('isPreferred')?.setValue(false);
+    }
+
+    this.names.at(index).get('isPreferred')?.setValue(!currentValue);
   }
 
   //TODO: On Form change events make sure only 1 name is selected as perferred.

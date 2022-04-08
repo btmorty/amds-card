@@ -29,13 +29,13 @@
         <ng-container *ngFor="let name of names.controls; let i=index">
           <div [formGroupName]="i"
             [ngClass]="!!name.get('isPreferred')?.value ? 'preferred-name-background-color' : ''">
-            <mat-checkbox formControlName="isPreferred" style="margin-right: 8px;"></mat-checkbox>
+            <mat-checkbox formControlName="isPreferred" style="margin-right: 8px;" (change)="checkboxPreferredNameChange(i, $event)"></mat-checkbox>
             <mat-form-field appearance="standard" floatLabel="always">
               <mat-label>Type {{!!name.get('isPreferred')?.value ? '(PREFERRED)' : ''}}</mat-label>
               <mat-select formControlName="type">
-                <mat-option *ngIf="i === 0" value="legal">Legal</mat-option>
-                <mat-option *ngIf="i === 1" value="previous">Previous Legal</mat-option>
-                <mat-option value="alternate">Alternate</mat-option>
+                <mat-option *ngIf="i === 0" value="legal">Legal/Billing</mat-option>
+                <mat-option *ngIf="i !== 0" value="previous">Previous Legal/Billing</mat-option>
+                <mat-option *ngIf="i !== 0" value="alternate">Alternate</mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field appearance="standard" floatLabel="always" required>
@@ -53,11 +53,11 @@
             <button amds-card-button [matMenuTriggerFor]="patientNameMenu" buttonIcon="ellipsis-horizontal"
             matTooltip="More"></button>
           <mat-menu #patientNameMenu="matMenu" xPosition="before">
-            <button mat-menu-item (click)="removeName(i)">
+            <button mat-menu-item *ngIf="name.get('type')?.value !== 'legal'" (click)="removeName(i)">
               <span style="color: red;">Delete Name</span>
             </button>
-            <button mat-menu-item (click)="setPreferredName(i)">
-              <span>Set as Preferred Name</span>
+            <button mat-menu-item (click)="menuTogglePreferredName(i)">
+              <span>{{!!name.get('isPreferred')?.value ? 'Remove' : 'Set'}} as Preferred Name</span>
             </button>
           </mat-menu>
           </div>
