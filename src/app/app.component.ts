@@ -73,9 +73,9 @@ export class AppComponent {
     employerid: 1,
     responsiblepartyid: 22222,
     newresponsibleparty: {
-      firstname: 'Paula',
-      middlename: '',
-      lastname: 'Smith'
+      firstName: 'Paula',
+      middleName: '',
+      lastName: 'Smith'
     },
     relationship: 18,
     hipaarelationship: 'SELF',

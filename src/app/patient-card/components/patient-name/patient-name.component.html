@@ -3,7 +3,17 @@
   <amds-section-detail>
     <amds-section-detail-item>
       <amds-section-detail-label><u>N</u>AME</amds-section-detail-label>
-      <amds-section-detail-text>{{preferredName}}</amds-section-detail-text>
+      <amds-section-detail-text>{{legalName}}</amds-section-detail-text>
+    </amds-section-detail-item>
+    <amds-section-detail-item *ngIf="preferredName !== ''">
+      <div class="preferred-name-background-color" style="display: flex; flex-direction: row; align-items: center; border-radius: 500px 0 0 500px;">
+      <svg width="10" height="10" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M12.9999 6.20336C13.0731 6.1302 13.112 6.05494 13.1173 5.97651C13.122 5.89861 13.1246 5.81809 13.1246 5.7344C13.1246 5.64071 13.112 5.55755 13.0857 5.48439C13.0599 5.41176 13.0157 5.31807 12.9531 5.20333L12.0309 4.28119C11.9688 4.21856 11.8957 4.17487 11.8125 4.14856C11.7288 4.12277 11.6409 4.10961 11.5467 4.10961C11.4535 4.10961 11.3672 4.12277 11.2893 4.14856C11.2114 4.17487 11.1409 4.21856 11.0783 4.28119L6.57811 8.82819L4.54647 6.79707C4.48436 6.73443 4.41172 6.69022 4.32804 6.6639C4.24435 6.63811 4.16119 6.62495 4.07803 6.62495C3.97381 6.62495 3.88276 6.63811 3.80434 6.6639C3.72644 6.69022 3.65591 6.73443 3.5938 6.79707L2.67167 7.73446C2.60956 7.7971 2.56482 7.87026 2.53903 7.95342C2.51271 8.03658 2.50008 8.12027 2.50008 8.20343C2.50008 8.30764 2.51271 8.39607 2.53903 8.4687C2.56482 8.54186 2.60956 8.60976 2.67167 8.67186L6.15599 12.1093C6.21863 12.172 6.29126 12.2167 6.37495 12.2425C6.45811 12.2683 6.54127 12.2815 6.62496 12.2815C6.72917 12.2815 6.81759 12.2683 6.89075 12.2425C6.96339 12.2167 7.03128 12.172 7.09339 12.1093L12.9999 6.20336ZM11.1172 0.624757C12.0909 1.04161 12.9399 1.61216 13.6641 2.33587C14.3884 3.0601 14.9584 3.90908 15.3752 4.88279C15.7916 5.85703 16 6.89602 16 8.00026C16 9.10451 15.7916 10.1435 15.3752 11.1172C14.9584 12.0914 14.3884 12.9404 13.6641 13.6641C12.9399 14.3884 12.0909 14.9584 11.1172 15.3752C10.143 15.7916 9.10398 16 7.99974 16C6.89549 16 5.85703 15.7916 4.88279 15.3752C3.90908 14.9584 3.05957 14.3884 2.33587 13.6641C1.61163 12.9404 1.04109 12.0914 0.624757 11.1172C0.207902 10.1435 0 9.10451 0 8.00026C0 6.89602 0.207902 5.85703 0.624757 4.88279C1.04109 3.90908 1.61163 3.0601 2.33587 2.33587C3.05957 1.61216 3.90908 1.04161 4.88279 0.624757C5.85703 0.208428 6.89549 0 7.99974 0C9.10398 0 10.143 0.208428 11.1172 0.624757Z"
+          fill="#197D74" />
+      </svg>
+      <amds-section-detail-text style="margin-left: 8px;">{{preferredName}}</amds-section-detail-text>
+    </div>
     </amds-section-detail-item>
   </amds-section-detail>
   <amds-section-actions>
@@ -19,17 +29,18 @@
           fill="#45668F" />
       </svg>
       <button mat-icon-button class="add-button" (click)="addName()" [disabled]="!names.at(0).valid">
-        <i [matTooltip]="names.at(0).valid ? 'Add name' : 'Must have valid legal name'" class="amds-icon amds-icon-plus-add"></i>
+        <i [matTooltip]="names.at(0).valid ? 'Add name' : 'Must have valid legal name'"
+          class="amds-icon amds-icon-plus-add"></i>
       </button>
     </div>
   </amds-section-actions>
   <amds-section-content>
-    <form [formGroup]="namesFormGroup">
+    <form [formGroup]="patientNameForm">
       <ng-container formArrayName="names">
-        <ng-container *ngFor="let name of names.controls; let i=index">
-          <div [formGroupName]="i"
-            [ngClass]="!!name.get('isPreferred')?.value ? 'preferred-name-background-color' : ''">
-            <mat-checkbox formControlName="isPreferred" style="margin-right: 8px;" (change)="checkboxPreferredNameChange(i, $event)"></mat-checkbox>
+        <ng-container *ngFor="let name of namesFormGroupArray; let i = index">
+          <div [formGroup]="name" [ngClass]="!!name.get('isPreferred')?.value ? 'preferred-name-background-color' : ''">
+            <mat-checkbox formControlName="isPreferred" style="margin-right: 8px;"
+              (change)="checkboxPreferredNameChange(i, $event)"></mat-checkbox>
             <mat-form-field appearance="standard" floatLabel="always">
               <mat-label>Type {{!!name.get('isPreferred')?.value ? '(PREFERRED)' : ''}}</mat-label>
               <mat-select formControlName="type">
@@ -49,17 +60,17 @@
             <mat-form-field appearance="standard" floatLabel="always" required>
               <mat-label>Last</mat-label>
               <input matInput autocomplete="off" formControlName="lastName">
-            </mat-form-field>            
+            </mat-form-field>
             <button amds-card-button [matMenuTriggerFor]="patientNameMenu" buttonIcon="ellipsis-horizontal"
-            matTooltip="More"></button>
-          <mat-menu #patientNameMenu="matMenu" xPosition="before">
-            <button mat-menu-item *ngIf="name.get('type')?.value !== 'legal'" (click)="removeName(i)">
-              <span style="color: red;">Delete Name</span>
-            </button>
-            <button mat-menu-item (click)="menuTogglePreferredName(i)">
-              <span>{{!!name.get('isPreferred')?.value ? 'Remove' : 'Set'}} as Preferred Name</span>
-            </button>
-          </mat-menu>
+              matTooltip="More"></button>
+            <mat-menu #patientNameMenu="matMenu" xPosition="before">
+              <button mat-menu-item *ngIf="name.get('type')?.value !== 'legal'" (click)="removeName(i)">
+                <span style="color: red;">Delete Name</span>
+              </button>
+              <button mat-menu-item (click)="menuTogglePreferredName(i)">
+                <span>{{!!name.get('isPreferred')?.value ? 'Remove' : 'Set'}} as Preferred Name</span>
+              </button>
+            </mat-menu>
           </div>
         </ng-container>
       </ng-container>

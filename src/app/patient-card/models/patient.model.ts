@@ -34,16 +34,16 @@ export interface IPatient {
 }
 
 export enum PatientNameTypes {
-  Legal = 0,
-  PreviousLegal = 1,
-  Other = 2
+  Legal = 'legal',
+  PreviousLegal = 'previous',
+  alternate = 'alternate'
 }
 
 export interface IPatientName {
   id?: number;
-  first: string;
-  middle: string;
-  last: string;
+  firstName: string;
+  middleName: string;
+  lastName: string;
   full: string;
   type: PatientNameTypes;
   isPreferred: boolean;
@@ -51,39 +51,39 @@ export interface IPatientName {
 
 export class PatientName implements IPatientName {
   id?: number;
-  first: string;
-  middle: string;
-  last: string;
+  firstName: string;
+  middleName: string;
+  lastName: string;
   full: string;
   type: any;
   isPreferred: boolean;
 
   constructor(
-    first: string,
-    middle: string,
-    last: string,
+    firstName: string,
+    middleName: string,
+    lastName: string,
     type: any,
     isPreferred: boolean,
     id?: number
   ) {
-    this.first = first;
-    this.middle = middle;
-    this.last = last;
+    this.firstName = firstName;
+    this.middleName = middleName;
+    this.lastName = lastName;
     this.type = type;
     this.isPreferred = isPreferred;
     this.id = id;
 
     // construct patient full name
-    if (typeof middle != 'undefined' && middle) {
-      this.full = `${first} ${middle} ${last}`;
+    if (typeof middleName != 'undefined' && middleName) {
+      this.full = `${firstName} ${middleName} ${lastName}`;
     } else {
-      this.full = `${first} ${last}`;
+      this.full = `${firstName} ${lastName}`;
     }
   }
 }
 
 export interface IPatientResponsibleParty {
-  firstname: string;
-  middlename: string;
-  lastname: string;
+  firstName: string;
+  middleName: string;
+  lastName: string;
 }

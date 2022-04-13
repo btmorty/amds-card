@@ -23,50 +23,85 @@ export class PatientNameComponent implements OnChanges {
   @Input() isExpanded = false;
   @Input() patientNames: IPatientName[] | undefined;
 
-  namesFormGroup: FormGroup;
+  /**
+   * The patient name form group
+   */
+  public patientNameForm: FormGroup = this.fb.group({
+    names: this.fb.array([]),
+  });
 
+  /**
+   * Get patient names form array
+   */
   get names(): FormArray {
-    return this.namesFormGroup.get('names') as FormArray;
+    return this.patientNameForm.get('names') as FormArray;
   }
 
+  /**
+   * Get name form group array
+   */
+  get namesFormGroupArray(): FormGroup[] {
+    return this.names.controls as FormGroup[];
+  }
+
+  /**
+   * Get the preferend name value
+   */
   get preferredName(): string {
-    const names = this.names.value as IPatientName[];
-    let name = names.find((f) => f.isPreferred);
+    const patientNameFormValues = this.names.value as IPatientName[];
+    if (patientNameFormValues.length > 0) {
+      const preferredName = patientNameFormValues.find((f) => f.isPreferred);
 
-    if (!name) {
-      name = names.find((f) => f.type === PatientNameTypes.Legal);
+      if (preferredName) {
+        return this.getfullName(preferredName);
+      } else {
+        return '';
+      }
+    } else {
+      return '';
     }
+  }
 
-    if (name) {
-      const preferredName = new PatientName(
-        name.first,
-        name.middle,
-        name.last,
-        name.type,
-        name.isPreferred
+  /**
+   * Get the legal name value
+   */
+  get legalName(): string {
+    const patientNameFormValues = this.names.value as IPatientName[];
+    if (patientNameFormValues.length > 0) {
+      const legalName = patientNameFormValues.find(
+        (f) => f.type === PatientNameTypes.Legal
       );
-      return preferredName.full;
+
+      if (legalName) {
+        return this.getfullName(legalName);
+      } else {
+        return '';
+      }
     } else {
       return '';
     }
   }
 
   constructor(private fb: FormBuilder) {
-    this.namesFormGroup = this.fb.group({
-      names: this.fb.array([]),
-    });
+    this.initPatientNameForm();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['patientNames']) {
       const patientNameChanges = changes['patientNames'];
-      if (patientNameChanges.previousValue !== patientNameChanges.currentValue) {
+      if (
+        patientNameChanges.previousValue !== patientNameChanges.currentValue
+      ) {
+        // TODO: check if form is dirty and prevent loss of changes
         this.clearForm();
         this.initPatientNameForm();
       }
     }
   }
 
+  /**
+   * Initializes the patient name form
+   */
   initPatientNameForm(): void {
     if (this.patientNames) {
       this.patientNames.forEach((name) => {
@@ -77,18 +112,25 @@ export class PatientNameComponent implements OnChanges {
     }
   }
 
+  /**
+   * Inserts patient name values into form controls
+   * @param name Patient Name to insert into form
+   */
   insertName(name: IPatientName): void {
     const insertName = this.fb.group({
       isPreferred: [name.isPreferred],
       type: [name.type, Validators.required],
-      firstName: [name.first, Validators.required],
-      middleName: [name.middle],
-      lastName: [name.last, Validators.required],
+      firstName: [name.firstName, Validators.required],
+      middleName: [name.middleName],
+      lastName: [name.lastName, Validators.required],
     });
 
     this.names.push(insertName);
   }
 
+  /**
+   * Adds a blank name row to the form
+   */
   addName(): void {
     const newName = this.fb.group({
       isPreferred: [false],
@@ -101,10 +143,17 @@ export class PatientNameComponent implements OnChanges {
     this.names.push(newName);
   }
 
+  /**
+   * Removes patient name from the form array
+   * @param index The index refrence of the name to be removed from the form
+   */
   removeName(index: number): void {
     this.names.removeAt(index);
   }
 
+  /**
+   * Clears the patient name form
+   */
   clearForm(): void {
     this.names.clear();
   }
@@ -129,13 +178,11 @@ export class PatientNameComponent implements OnChanges {
     this.names.at(index).get('isPreferred')?.setValue(!currentValue);
   }
 
-  //TODO: On Form change events make sure only 1 name is selected as perferred.
-
   getfullName(name: IPatientName): string {
-    if (typeof name.middle != 'undefined' && name.middle) {
-      return `${name.first} ${name.middle} ${name.last}`;
+    if (typeof name.middleName != 'undefined' && name.middleName) {
+      return `${name.firstName} ${name.middleName} ${name.lastName}`;
     } else {
-      return `${name.first} ${name.last}`;
+      return `${name.firstName} ${name.lastName}`;
     }
   }
 }
