@@ -22,12 +22,14 @@
         <span>{{names.controls.length}}</span>
       </div>
       <span>OTHER</span>
-      <svg style="margin-left: 8px;" width="7" height="13" viewBox="0 0 7 13" fill="none"
+      <button mat-icon-button class="add-button" [ngStyle]="{'transform' : !showOtherNames ? 'rotate(-90deg)' : '' }" (click)="toggleShowOtherNames()">
+        <svg width="12" height="12" viewBox="0 0 10 16" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd"
           d="M0.105125 6.22627L5.73496 0.626226C5.80528 0.541839 5.89691 0.5 6.00984 0.5C6.10787 0.5 6.19878 0.54184 6.28331 0.626226L6.87357 1.21623C6.95809 1.29991 7 1.39777 7 1.51052C7 1.60838 6.95809 1.69986 6.87357 1.78425L2.15079 6.5L6.87357 11.2363C6.95809 11.3207 7 11.4115 7 11.51C7 11.6079 6.95809 11.6994 6.87357 11.7838L6.28331 12.3943C6.19878 12.4645 6.10786 12.5 6.00984 12.5C5.89691 12.5 5.80528 12.4645 5.73496 12.3943L0.105125 6.77302C0.0348053 6.70281 5.14742e-07 6.61204 5.24537e-07 6.5C5.33154e-07 6.40143 0.0348054 6.31066 0.105125 6.22627Z"
           fill="#45668F" />
       </svg>
+      </button>
       <button mat-icon-button class="add-button" (click)="addName()" [disabled]="!names.at(0).valid">
         <i [matTooltip]="names.at(0).valid ? 'Add name' : 'Must have valid legal name'"
           class="amds-icon amds-icon-plus-add"></i>
@@ -38,6 +40,7 @@
     <form [formGroup]="patientNameForm">
       <ng-container formArrayName="names">
         <ng-container *ngFor="let name of namesFormGroupArray; let i = index">
+          <ng-container *ngIf="!showOtherNames && (name.get('type')?.value !== 'legal' || !name.get('isPreferred')?.value)">
           <div [formGroup]="name" [ngClass]="!!name.get('isPreferred')?.value ? 'preferred-name-background-color' : ''">
             <mat-checkbox formControlName="isPreferred" style="margin-right: 8px;"
               (change)="checkboxPreferredNameChange(i, $event)"></mat-checkbox>
@@ -72,6 +75,7 @@
               </button>
             </mat-menu>
           </div>
+        </ng-container>
         </ng-container>
       </ng-container>
     </form>

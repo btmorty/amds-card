@@ -31,6 +31,11 @@ export class PatientNameComponent implements OnChanges {
   });
 
   /**
+   * Status of show or hide other names
+   */
+  public showOtherNames: boolean = false;
+
+  /**
    * Get patient names form array
    */
   get names(): FormArray {
@@ -184,5 +189,11 @@ export class PatientNameComponent implements OnChanges {
     } else {
       return `${name.firstName} ${name.lastName}`;
     }
+  }
+
+  toggleShowOtherNames(): void {
+    //TODO: force order in html
+    //TODO: have separate section for show/hide
+    this.showOtherNames = !this.showOtherNames;
   }
 }
