@@ -1,0 +1,38 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@advancedmd/patient-card": ["libs/cards/patient-card/src/index.ts"],
+      "@advancedmd/patient-care-team-card": [
+        "libs/cards/care-team-card/src/index.ts"
+      ],
+      "@advancedmd/patient-insurance-card": [
+        "libs/cards/insurance-card/src/index.ts"
+      ],
+      "@advancedmd/patient-marketing-card": [
+        "libs/cards/marketing-card/src/index.ts"
+      ],
+      "@advancedmd/patient-referral-card": [
+        "libs/cards/referral-card/src/index.ts"
+      ],
+      "@advancedmd/patient-resp-party-card": [
+        "libs/cards/resp-party-card/src/index.ts"
+      ],
+      "@amds-patient/cards/card": ["libs/cards/card/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

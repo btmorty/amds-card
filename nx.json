@@ -1,0 +1,59 @@
+{
+  "npmScope": "amds-patient",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "cards-card": {
+      "tags": []
+    },
+    "cards-care-team-card": {
+      "tags": []
+    },
+    "cards-insurance-card": {
+      "tags": []
+    },
+    "cards-marketing-card": {
+      "tags": []
+    },
+    "cards-patient-card": {
+      "tags": []
+    },
+    "cards-referral-card": {
+      "tags": []
+    },
+    "cards-resp-party-card": {
+      "tags": []
+    },
+    "patient-info": {
+      "tags": []
+    },
+    "patient-info-e2e": {
+      "tags": [],
+      "implicitDependencies": ["patient-info"]
+    }
+  }
+}
